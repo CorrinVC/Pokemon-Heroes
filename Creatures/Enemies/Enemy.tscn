@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dqqjac2h8py2d"]
+
+[ext_resource type="Texture2D" uid="uid://utf4wvoijkyr" path="res://Creatures/Enemies/Colorless/Rattata/RattataSprite.png" id="1_giif7"]
+[ext_resource type="Script" uid="uid://bev8ocoee2uhv" path="res://Creatures/Enemies/Enemy.gd" id="1_mqj4y"]
+[ext_resource type="LabelSettings" uid="uid://b7c56s40ajfuv" path="res://Assets/LabelSettings.tres" id="2_mqj4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giif7"]
+size = Vector2(112, 112)
+
+[node name="Enemy" type="Node2D" unique_id=755826848]
+script = ExtResource("1_mqj4y")
+
+[node name="EnemySprite" type="Sprite2D" parent="." unique_id=1381173547]
+scale = Vector2(3, 3)
+texture = ExtResource("1_giif7")
+
+[node name="EnemyName" type="Label" parent="." unique_id=378622081]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 84.0
+offset_right = 50.0
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "Rattata"
+label_settings = ExtResource("2_mqj4y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoundingBox" type="Area2D" parent="." unique_id=1777746549]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundingBox" unique_id=644390198]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_giif7")
+
+[connection signal="mouse_entered" from="BoundingBox" to="." method="onBoundingBoxMouseEntered"]
+[connection signal="mouse_exited" from="BoundingBox" to="." method="onBoundingBoxMouseExited"]

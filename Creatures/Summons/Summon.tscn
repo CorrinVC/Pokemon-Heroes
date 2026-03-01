@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cre2fx6pkrc50"]
+
+[ext_resource type="Script" uid="uid://b821cttcvijqf" path="res://Creatures/Summons/Summon.gd" id="1_gwulo"]
+[ext_resource type="Texture2D" uid="uid://dxd781hvotndp" path="res://Creatures/Summons/Electric/Pikachu/PikachuSprite.png" id="1_v5hmg"]
+[ext_resource type="LabelSettings" uid="uid://b7c56s40ajfuv" path="res://Assets/LabelSettings.tres" id="2_gwulo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5hmg"]
+size = Vector2(112, 112)
+
+[node name="Summon" type="Node2D" unique_id=1441117334]
+script = ExtResource("1_gwulo")
+
+[node name="SummonSprite" type="Sprite2D" parent="." unique_id=1513561156]
+scale = Vector2(3, 3)
+texture = ExtResource("1_v5hmg")
+flip_h = true
+
+[node name="SummonName" type="Label" parent="." unique_id=1080443160]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 84.0
+offset_right = 50.0
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "Pikachu"
+label_settings = ExtResource("2_gwulo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoundingBox" type="Area2D" parent="." unique_id=1218588651]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundingBox" unique_id=149295991]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_v5hmg")
+
+[connection signal="mouse_entered" from="BoundingBox" to="." method="onBoundingBoxMouseEntered"]
+[connection signal="mouse_exited" from="BoundingBox" to="." method="onBoundingBoxMouseExited"]

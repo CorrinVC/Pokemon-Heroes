@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://b08l1filbqkwg"]
+
+[ext_resource type="Script" uid="uid://din4vpceyuu1v" path="res://Stages/Battle/UI/CardUi.gd" id="1_r07iu"]
+[ext_resource type="LabelSettings" uid="uid://b7c56s40ajfuv" path="res://Assets/LabelSettings.tres" id="2_qjmey"]
+[ext_resource type="Script" uid="uid://ddq0obdvsqu0a" path="res://Stages/Battle/UI/CardStateMachine.gd" id="3_qjmey"]
+[ext_resource type="Script" uid="uid://ccj72n00nwhgj" path="res://Stages/Battle/UI/Card States/CardBaseState.gd" id="4_fklk5"]
+[ext_resource type="Script" uid="uid://fxwrvi7jbr4v" path="res://Stages/Battle/UI/Card States/CardHoverState.gd" id="5_k5bih"]
+[ext_resource type="Script" uid="uid://df4sxye5n1lcp" path="res://Stages/Battle/UI/Card States/CardClickedState.gd" id="6_4js1d"]
+[ext_resource type="Script" uid="uid://cjuqv64hrfxfp" path="res://Stages/Battle/UI/Card States/CardDraggingState.gd" id="7_owllh"]
+[ext_resource type="Script" uid="uid://dqqycr7xaapea" path="res://Stages/Battle/UI/Card States/CardReleasedState.gd" id="8_iaknd"]
+
+[node name="CardUI" type="Control" unique_id=594355697]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 150.0
+pivot_offset = Vector2(60, 150)
+script = ExtResource("1_r07iu")
+
+[node name="BackgroundColor" type="ColorRect" parent="." unique_id=577828703]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.50841665, 0.52688414, 0.46957558, 1)
+
+[node name="StateLabel" type="Label" parent="." unique_id=1399987552]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Base"
+label_settings = ExtResource("2_qjmey")
+
+[node name="CardStateMachine" type="Node" parent="." unique_id=635942030 node_paths=PackedStringArray("initialState")]
+unique_name_in_owner = true
+script = ExtResource("3_qjmey")
+initialState = NodePath("CardBaseState")
+
+[node name="CardBaseState" type="Node" parent="CardStateMachine" unique_id=130231982]
+script = ExtResource("4_fklk5")
+
+[node name="CardHoverState" type="Node" parent="CardStateMachine" unique_id=793575697]
+script = ExtResource("5_k5bih")
+state = 1
+
+[node name="CardClickedState" type="Node" parent="CardStateMachine" unique_id=1595275017]
+script = ExtResource("6_4js1d")
+state = 2
+
+[node name="CardDraggingState" type="Node" parent="CardStateMachine" unique_id=2138154256]
+script = ExtResource("7_owllh")
+state = 3
+
+[node name="CardReleasedState" type="Node" parent="CardStateMachine" unique_id=1386519867]
+script = ExtResource("8_iaknd")
+state = 4
+
+[connection signal="gui_input" from="." to="." method="onGuiInput"]
+[connection signal="mouse_entered" from="." to="." method="onMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="onMouseExited"]

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b177ld3irkowa"]
+
+[ext_resource type="Texture2D" uid="uid://cu7ox04s438gt" path="res://Stages/Battle/Backgrounds/Background00.png" id="1_cw4v3"]
+[ext_resource type="PackedScene" uid="uid://bhpeb8cjtut73" path="res://Creatures/Heroes/Hero.tscn" id="2_cw4v3"]
+[ext_resource type="PackedScene" uid="uid://dqqjac2h8py2d" path="res://Creatures/Enemies/Enemy.tscn" id="3_4xmfl"]
+[ext_resource type="PackedScene" uid="uid://cre2fx6pkrc50" path="res://Creatures/Summons/Summon.tscn" id="3_cw4v3"]
+[ext_resource type="PackedScene" uid="uid://b08l1filbqkwg" path="res://Stages/Battle/UI/CardUi.tscn" id="5_a021t"]
+
+[node name="BattleStage" type="Node2D" unique_id=1882334100]
+
+[node name="BattleBackground" type="Sprite2D" parent="." unique_id=139411810]
+scale = Vector2(4, 4)
+texture = ExtResource("1_cw4v3")
+offset = Vector2(160, 90)
+
+[node name="Hero" parent="." unique_id=1809948697 instance=ExtResource("2_cw4v3")]
+position = Vector2(260, 380)
+
+[node name="Summons" type="Node2D" parent="." unique_id=1014582706]
+
+[node name="Summon" parent="Summons" unique_id=1441117334 instance=ExtResource("3_cw4v3")]
+position = Vector2(440, 380)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=398313929]
+
+[node name="Enemy" parent="Enemies" unique_id=755826848 instance=ExtResource("3_4xmfl")]
+position = Vector2(900, 380)
+
+[node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696]
+
+[node name="Hand" type="Control" parent="BattleUI" unique_id=1672963127]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -70.0
+offset_right = 20.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="CardUI" parent="BattleUI/Hand" unique_id=594355697 instance=ExtResource("5_a021t")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -150.0
+offset_right = 60.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
