@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CreatureStats" format=3 uid="uid://dc7gj6tlbn2m7"]
+
+[ext_resource type="Script" uid="uid://hhi7qg6546tf" path="res://Creatures/CreatureStats.gd" id="1_kq87e"]
+[ext_resource type="Texture2D" uid="uid://cspejfkbtcebm" path="res://Creatures/Heroes/Raichu/RaichuSprite.png" id="1_ng4sw"]
+
+[resource]
+script = ExtResource("1_kq87e")
+creatureName = "Raichu"
+creatureSprite = ExtResource("1_ng4sw")
+metadata/_custom_type_script = "uid://hhi7qg6546tf"

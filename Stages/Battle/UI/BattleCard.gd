@@ -2,17 +2,13 @@ class_name BattleCard extends Control
 
 const BASE_SPEED: float = 0.1
 
-#const TARGET_ALL: String = "targetAll"
-#const TARGET_FRIENDLY: String = "targetFriendly"
-#const TARGET_HOSTILE: String = "targetHostile"
-
 @export var cardData: CardData : set = setCardData
 
 @onready var cardVisuals: CardVisuals = %CardVisuals
 @onready var boundingBox: Area2D = %BoundingBox
 @onready var stateLabel: Label = %StateLabel
 @onready var cardStateMachine: BattleCardStateMachine = %CardStateMachine
-@onready var targets: Array[Node2D] = []
+@onready var targets: Array[Area2D] = []
 
 var handPosition: Vector2
 var dragOffset: Vector2

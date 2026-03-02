@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CreatureStats" format=3 uid="uid://bwoe4wghimy6p"]
+
+[ext_resource type="Texture2D" uid="uid://dxd781hvotndp" path="res://Creatures/Summons/Electric/Pikachu/PikachuSprite.png" id="1_fksdo"]
+[ext_resource type="Script" uid="uid://hhi7qg6546tf" path="res://Creatures/CreatureStats.gd" id="1_gx24v"]
+
+[resource]
+script = ExtResource("1_gx24v")
+creatureName = "Pikachu"
+creatureSprite = ExtResource("1_fksdo")
+size = 2
+metadata/_custom_type_script = "uid://hhi7qg6546tf"

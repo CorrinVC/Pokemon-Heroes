@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CreatureStats" format=3 uid="uid://buavik1g52boq"]
+
+[ext_resource type="Script" uid="uid://hhi7qg6546tf" path="res://Creatures/CreatureStats.gd" id="1_0vqok"]
+[ext_resource type="Texture2D" uid="uid://utf4wvoijkyr" path="res://Creatures/Enemies/Colorless/Rattata/RattataSprite.png" id="1_7nhso"]
+
+[resource]
+script = ExtResource("1_0vqok")
+creatureName = "Rattata"
+creatureSprite = ExtResource("1_7nhso")
+size = 2
+metadata/_custom_type_script = "uid://hhi7qg6546tf"

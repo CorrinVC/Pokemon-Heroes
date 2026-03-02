@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giif7"]
 size = Vector2(112, 112)
 
-[node name="Enemy" type="Area2D" unique_id=1144616299]
+[node name="EnemyCreature" type="Area2D" unique_id=1144616299]
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_mqj4y")
@@ -16,11 +16,12 @@ script = ExtResource("1_mqj4y")
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_giif7")
 
-[node name="EnemySprite" type="Sprite2D" parent="." unique_id=1381173547]
+[node name="CreatureSprite" type="Sprite2D" parent="." unique_id=1381173547]
+unique_name_in_owner = true
 scale = Vector2(3, 3)
 texture = ExtResource("1_giif7")
 
-[node name="EnemyName" type="Label" parent="." unique_id=378622081]
+[node name="NameLabel" type="Label" parent="." unique_id=378622081]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(100, 0)

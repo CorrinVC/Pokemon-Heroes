@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cpa7jsu7bnwhu"]
+
+[ext_resource type="Script" uid="uid://c0whtnschitfb" path="res://Creatures/Creature.gd" id="1_66lwe"]
+[ext_resource type="Texture2D" uid="uid://cspejfkbtcebm" path="res://Creatures/Heroes/Raichu/RaichuSprite.png" id="2_xwwmf"]
+[ext_resource type="LabelSettings" uid="uid://b7c56s40ajfuv" path="res://Assets/LabelSettings.tres" id="3_8f7uj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x66ry"]
+size = Vector2(168, 168)
+
+[node name="Creature" type="Area2D" unique_id=1289275086]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_66lwe")
+
+[node name="BoundingBox" type="CollisionShape2D" parent="." unique_id=1070545048]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_x66ry")
+
+[node name="CreatureSprite" type="Sprite2D" parent="." unique_id=177867501]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+texture = ExtResource("2_xwwmf")
+flip_h = true
+
+[node name="NameLabel" type="Label" parent="." unique_id=1800522188]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 84.0
+offset_right = 50.0
+offset_bottom = 112.0
+grow_horizontal = 2
+text = "Raichu"
+label_settings = ExtResource("3_8f7uj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="onBoundingBoxMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="onBoundingBoxMouseExited"]

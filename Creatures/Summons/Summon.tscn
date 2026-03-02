@@ -7,21 +7,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5hmg"]
 size = Vector2(112, 112)
 
-[node name="Summon" type="Area2D" unique_id=1382648019]
+[node name="SummonCreature" type="Area2D" unique_id=1382648019]
 collision_layer = 4
 collision_mask = 16
 script = ExtResource("1_gwulo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149295991]
+unique_name_in_owner = true
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_v5hmg")
 
-[node name="SummonSprite" type="Sprite2D" parent="." unique_id=1513561156]
+[node name="CreatureSprite" type="Sprite2D" parent="." unique_id=1513561156]
+unique_name_in_owner = true
 scale = Vector2(3, 3)
 texture = ExtResource("1_v5hmg")
 flip_h = true
 
-[node name="SummonName" type="Label" parent="." unique_id=1080443160]
+[node name="NameLabel" type="Label" parent="." unique_id=1080443160]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(100, 0)
