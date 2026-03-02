@@ -1,15 +1,15 @@
-class_name CardStateMachine extends Node
+class_name BattleCardStateMachine extends Node
 
 @export var initialState: CardState
 
 var currentState: CardState
 var states: Dictionary = {}
 
-func initStateMachine(cardUI: CardUI) -> void:
+func initStateMachine(battleCard: BattleCard) -> void:
 	for state: CardState in get_children():
 		states[state.state] = state
 		state.transitionRequested.connect(onTransitionRequested)
-		state.cardUI = cardUI
+		state.battleCard = battleCard
 	
 	if initialState:
 		initialState.enter()

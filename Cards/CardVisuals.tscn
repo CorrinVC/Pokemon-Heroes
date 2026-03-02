@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://by5cs38ga7csu"]
+
+[ext_resource type="Script" uid="uid://cutw8dlp77hej" path="res://Cards/CardVisuals.gd" id="1_5ayha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ayha"]
+bg_color = Color(1, 1, 0.39999998, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0.8039216, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ayha"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rcyc7"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xy48c"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardVisuals" type="Control" unique_id=205995574]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5ayha")
+
+[node name="Background" type="Panel" parent="." unique_id=1951248226]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ayha")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=2047383985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=901748375]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="CardNameLabel" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1418714326]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Card Name"
+label_settings = SubResource("LabelSettings_5ayha")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardArt" type="TextureRect" parent="Background/MarginContainer/VBoxContainer" unique_id=927864962]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 47)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CardTypeLabel" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1120919726]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+text = "Attack"
+label_settings = SubResource("LabelSettings_rcyc7")
+horizontal_alignment = 1
+
+[node name="CardTextLabel" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=1375888392]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Dong Lmao"
+label_settings = SubResource("LabelSettings_xy48c")
+horizontal_alignment = 1

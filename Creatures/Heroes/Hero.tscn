@@ -7,8 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x66ry"]
 size = Vector2(168, 168)
 
-[node name="Hero" type="Node2D" unique_id=1809948697]
+[node name="Hero" type="Area2D" unique_id=1289275086]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("1_2xdgp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1070545048]
+shape = SubResource("RectangleShape2D_x66ry")
 
 [node name="HeroSprite" type="Sprite2D" parent="." unique_id=177867501]
 scale = Vector2(3, 3)
@@ -32,10 +37,5 @@ label_settings = ExtResource("2_2xdgp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BoundingBox" type="Area2D" parent="." unique_id=1288951544]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundingBox" unique_id=1070545048]
-shape = SubResource("RectangleShape2D_x66ry")
-
-[connection signal="mouse_entered" from="BoundingBox" to="." method="onBoundingBoxMouseEntered"]
-[connection signal="mouse_exited" from="BoundingBox" to="." method="onBoundingBoxMouseExited"]
+[connection signal="mouse_entered" from="." to="." method="onBoundingBoxMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="onBoundingBoxMouseExited"]

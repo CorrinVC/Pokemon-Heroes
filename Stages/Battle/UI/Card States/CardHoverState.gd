@@ -1,14 +1,17 @@
 extends CardState
 
-const HOVER_SCALE: float = 1.5
+const BASE_SCALE: float = 1.0
+const HOVER_SCALE: float = 1.2
 
 func enter() -> void:
 	super.enter()
-	cardUI.setScale(HOVER_SCALE, BASE_SPEED)
+	battleCard.setScale(HOVER_SCALE, BattleCard.BASE_SPEED)
+
+func exit() -> void:
+	battleCard.setScale(BASE_SCALE, BattleCard.BASE_SPEED)
 
 func onGuiInput(event: InputEvent) -> void:
 	if event.is_action_pressed(InputActions.LEFT_MOUSE):
-		#cardUI.pivot_offset = cardUI.get_global_mouse_position() - cardUI.global_position
 		transitionRequested.emit(self, State.CLICKED)
 
 func onMouseExited() -> void:

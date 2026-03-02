@@ -2,9 +2,6 @@ class_name CardState extends Node
 
 signal transitionRequested(from: CardState, to: State)
 
-const BASE_SCALE: float = 1.0
-const BASE_SPEED: float = 0.03
-
 enum State {
 	BASE,
 	HOVER,
@@ -15,10 +12,10 @@ enum State {
 
 @export var state: State
 
-var cardUI: CardUI
+var battleCard: BattleCard
 
 func enter() -> void:
-	cardUI.stateLabel.text = str(State.keys()[state])
+	battleCard.stateLabel.text = str(State.keys()[state])
 
 func exit() -> void:
 	pass

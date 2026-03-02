@@ -7,7 +7,7 @@ func onInput(event: InputEvent) -> void:
 		or event.is_action_pressed(InputActions.LEFT_MOUSE)
 	
 	if motion:
-		cardUI.global_position = cardUI.get_global_mouse_position() - cardUI.dragOffset
+		battleCard.global_position = battleCard.get_global_mouse_position() - battleCard.dragOffset
 	
 	if cancel:
 		transitionRequested.emit(self, State.BASE)
