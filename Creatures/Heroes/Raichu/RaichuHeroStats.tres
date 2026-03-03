@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeroStats" format=3 uid="uid://ddr40vqdiv78k"]
+
+[ext_resource type="Script" uid="uid://ddr7vnys7r8jd" path="res://Creatures/Heroes/HeroStats.gd" id="1_6icla"]
+[ext_resource type="Script" uid="uid://llvymkxfovph" path="res://Cards/CardData.gd" id="2_44jne"]
+[ext_resource type="Resource" uid="uid://cw7uq6b41eg4t" path="res://Cards/Raichu/RaichuCard00.tres" id="3_elmux"]
+[ext_resource type="Script" uid="uid://b54sf3vi1pp6a" path="res://Cards/CardPile.gd" id="4_vpuqs"]
+
+[sub_resource type="Resource" id="Resource_th3de"]
+script = ExtResource("4_vpuqs")
+cardList = Array[ExtResource("2_44jne")]([ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux")])
+metadata/_custom_type_script = "uid://b54sf3vi1pp6a"
+
+[resource]
+script = ExtResource("1_6icla")
+startingDeck = SubResource("Resource_th3de")
+metadata/_custom_type_script = "uid://ddr7vnys7r8jd"

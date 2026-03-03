@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+RNG="*uid://bujtk2rgk12cy"
 InputActions="*uid://dbapkhaijshl"
 CardTypes="*uid://ddmt1w5dds3gv"
 

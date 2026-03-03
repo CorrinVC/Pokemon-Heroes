@@ -2,35 +2,27 @@
 
 [ext_resource type="Texture2D" uid="uid://cu7ox04s438gt" path="res://Stages/Battle/Backgrounds/Background00.png" id="1_cw4v3"]
 [ext_resource type="PackedScene" uid="uid://cpa7jsu7bnwhu" path="res://Creatures/Creature.tscn" id="2_qow1e"]
-[ext_resource type="Texture2D" uid="uid://cspejfkbtcebm" path="res://Creatures/Heroes/Raichu/RaichuSprite.png" id="3_gafhu"]
-[ext_resource type="Script" uid="uid://hhi7qg6546tf" path="res://Creatures/CreatureStats.gd" id="4_2hfsl"]
+[ext_resource type="Script" uid="uid://bl1ngjkfoksv2" path="res://Creatures/Heroes/HeroCreature.gd" id="3_2hfsl"]
+[ext_resource type="Resource" uid="uid://dc7gj6tlbn2m7" path="res://Creatures/Heroes/Raichu/RaichuCreatureStats.tres" id="3_gafhu"]
+[ext_resource type="Resource" uid="uid://bwoe4wghimy6p" path="res://Creatures/Summons/Electric/Pikachu/PikachuStats.tres" id="4_2hfsl"]
+[ext_resource type="Resource" uid="uid://ddr40vqdiv78k" path="res://Creatures/Heroes/Raichu/RaichuHeroStats.tres" id="4_xjnxk"]
 [ext_resource type="PackedScene" uid="uid://b08l1filbqkwg" path="res://Stages/Battle/UI/BattleCard.tscn" id="5_a021t"]
-[ext_resource type="Texture2D" uid="uid://dxd781hvotndp" path="res://Creatures/Summons/Electric/Pikachu/PikachuSprite.png" id="5_xjnxk"]
-[ext_resource type="Texture2D" uid="uid://utf4wvoijkyr" path="res://Creatures/Enemies/Colorless/Rattata/RattataSprite.png" id="6_fa073"]
+[ext_resource type="Resource" uid="uid://buavik1g52boq" path="res://Creatures/Enemies/Colorless/Rattata/RattataStats.tres" id="5_xjnxk"]
 [ext_resource type="Resource" uid="uid://cw7uq6b41eg4t" path="res://Cards/Raichu/RaichuCard00.tres" id="6_ulux6"]
+[ext_resource type="Script" uid="uid://cfbydmegr8u65" path="res://Stages/Battle/UI/Hand.gd" id="7_2hfsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a021t"]
-size = Vector2(1280, 480)
+size = Vector2(1280, 464)
 
-[sub_resource type="Resource" id="Resource_gafhu"]
-script = ExtResource("4_2hfsl")
-creatureName = "Raichu"
-creatureSprite = ExtResource("3_gafhu")
-metadata/_custom_type_script = "uid://hhi7qg6546tf"
+[sub_resource type="Curve" id="Curve_2hfsl"]
+_limits = [0.0, 8.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 28.0, 0, 0, Vector2(0.5, 8), 0.0, 0.0, 0, 0, Vector2(1, 0), -28.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="Resource" id="Resource_2hfsl"]
-script = ExtResource("4_2hfsl")
-creatureName = "Pikachu"
-creatureSprite = ExtResource("5_xjnxk")
-size = 2
-metadata/_custom_type_script = "uid://hhi7qg6546tf"
-
-[sub_resource type="Resource" id="Resource_xjnxk"]
-script = ExtResource("4_2hfsl")
-creatureName = "Rattata"
-creatureSprite = ExtResource("6_fa073")
-size = 2
-metadata/_custom_type_script = "uid://hhi7qg6546tf"
+[sub_resource type="Curve" id="Curve_xjnxk"]
+_limits = [-5.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, -5), 0.0, 0.0, 0, 0, Vector2(0.5, 1.4901161e-08), 20.0, 20.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="BattleStage" type="Node2D" unique_id=1882334100]
 
@@ -42,30 +34,32 @@ offset = Vector2(160, 90)
 [node name="CardDropArea" type="Area2D" parent="." unique_id=706509923 groups=["targetAll"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea" unique_id=382265259]
-position = Vector2(640, 240)
+position = Vector2(640, 232)
 shape = SubResource("RectangleShape2D_a021t")
 
 [node name="HeroCreature" parent="." unique_id=1289275086 groups=["targetAll", "targetFriendly"] instance=ExtResource("2_qow1e")]
 position = Vector2(260, 380)
-creatureStats = SubResource("Resource_gafhu")
+script = ExtResource("3_2hfsl")
+heroStats = ExtResource("4_xjnxk")
+creatureStats = ExtResource("3_gafhu")
 
 [node name="Summons" type="Node2D" parent="." unique_id=1014582706]
 
 [node name="SummonCreature" parent="Summons" unique_id=1303052298 groups=["targetAll", "targetFriendly"] instance=ExtResource("2_qow1e")]
 position = Vector2(440, 380)
 collision_layer = 4
-creatureStats = SubResource("Resource_2hfsl")
+creatureStats = ExtResource("4_2hfsl")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=398313929]
 
 [node name="EnemyCreature" parent="Enemies" unique_id=1181621145 groups=["targetAll", "targetHostile"] instance=ExtResource("2_qow1e")]
 position = Vector2(900, 380)
 collision_layer = 8
-creatureStats = SubResource("Resource_xjnxk")
+creatureStats = ExtResource("5_xjnxk")
 
-[node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696]
+[node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696 groups=["uiLayer"]]
 
-[node name="Hand" type="Control" parent="BattleUI" unique_id=1672963127]
+[node name="Hand" type="Control" parent="BattleUI" unique_id=1672963127 node_paths=PackedStringArray("heroCreature")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -79,6 +73,10 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+script = ExtResource("7_2hfsl")
+heroCreature = NodePath("../../HeroCreature")
+handPositionCurve = SubResource("Curve_2hfsl")
+handRotationCurve = SubResource("Curve_xjnxk")
 
 [node name="CardUI" parent="BattleUI/Hand" unique_id=594355697 instance=ExtResource("5_a021t")]
 layout_mode = 1

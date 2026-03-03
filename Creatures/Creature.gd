@@ -1,4 +1,3 @@
-@tool
 class_name Creature extends Area2D
 
 const BOUNDING_BOX_SIZE: int = 56
@@ -19,7 +18,7 @@ func setStats(value: CreatureStats) -> void:
 	if not is_node_ready():
 		await ready
 	
-	creatureStats = value.duplicate()
+	creatureStats = value.createInstance()
 	creatureStats.statsChanged.connect(onStatsChanged)
 	
 	var boundingBoxShape: RectangleShape2D = boundingBox.shape.duplicate() as RectangleShape2D

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhpeb8cjtut73"]
 
-[ext_resource type="Script" uid="uid://bl1ngjkfoksv2" path="res://Creatures/Heroes/Hero.gd" id="1_2xdgp"]
+[ext_resource type="Script" uid="uid://bl1ngjkfoksv2" path="res://Creatures/Heroes/HeroCreature.gd" id="1_2xdgp"]
 [ext_resource type="Texture2D" uid="uid://cspejfkbtcebm" path="res://Creatures/Heroes/Raichu/RaichuSprite.png" id="1_x66ry"]
 [ext_resource type="LabelSettings" uid="uid://b7c56s40ajfuv" path="res://Assets/LabelSettings.tres" id="2_2xdgp"]
 

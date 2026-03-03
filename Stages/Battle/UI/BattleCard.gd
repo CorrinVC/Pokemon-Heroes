@@ -1,5 +1,7 @@
 class_name BattleCard extends Control
 
+signal reparentRequested(battleCard: BattleCard)
+
 const BASE_SPEED: float = 0.1
 
 @export var cardData: CardData : set = setCardData
@@ -10,12 +12,11 @@ const BASE_SPEED: float = 0.1
 @onready var cardStateMachine: BattleCardStateMachine = %CardStateMachine
 @onready var targets: Array[Area2D] = []
 
-var handPosition: Vector2
+var originalHandIndex: int
 var dragOffset: Vector2
 var tween: Tween
 
 func _ready() -> void:
-	handPosition = global_position
 	cardStateMachine.initStateMachine(self)
 
 func _input(event: InputEvent) -> void:
@@ -44,6 +45,7 @@ func play() -> void:
 		tween.kill()
 	
 	tween = create_tween()
+	var cardTargets: Array[Area2D] = targets.duplicate()
 	
 	# Snap to Target
 	if cardData.isSingleTargeted():
@@ -57,18 +59,10 @@ func play() -> void:
 	tween.tween_property(self, "modulate", Color.TRANSPARENT, BASE_SPEED)
 	tween.tween_property(self, "scale", Vector2.ONE * 0.75, BASE_SPEED).set_ease(Tween.EASE_OUT)
 	tween.finished.connect(func() -> void:
-		cardData.playCard(targets)
+		cardData.playCard(cardTargets)
+		#cardPlayed.emit()
 		queue_free()
 	)
-
-func snapback() -> void:
-	if tween:
-		tween.kill()
-	
-	var speed: float = BASE_SPEED * 2
-	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).set_parallel()
-	tween.tween_property(self, "global_position", handPosition, speed)
-	tween.tween_property(self, "scale", Vector2.ONE, speed)
 
 func onGuiInput(event: InputEvent) -> void:
 	cardStateMachine.onGuiInput(event)
