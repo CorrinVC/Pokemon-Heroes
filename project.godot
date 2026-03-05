@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 RNG="*uid://bujtk2rgk12cy"
 InputActions="*uid://dbapkhaijshl"
 CardTypes="*uid://ddmt1w5dds3gv"
+EventBus="*uid://curipx5vygw5g"
 
 [debug]
 

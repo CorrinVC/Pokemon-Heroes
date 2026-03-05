@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bih2d7vn3se8v" path="res://Stages/Battle/Logic/HeroLogic.gd" id="7_i4p0l"]
 [ext_resource type="Script" uid="uid://ck8g5sltnmheb" path="res://Stages/Battle/UI/BattleUI.gd" id="8_xdnx7"]
 [ext_resource type="PackedScene" uid="uid://dah5h1fto0jw7" path="res://Cards/UI/CardPileButton.tscn" id="11_fa073"]
+[ext_resource type="PackedScene" uid="uid://gq1fsuugv7ij" path="res://Cards/UI/CardPileView.tscn" id="15_d3f7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a021t"]
 size = Vector2(1280, 464)
@@ -159,3 +160,14 @@ offset_right = 20.0
 offset_bottom = -5.0
 grow_horizontal = 2
 horizontal_alignment = 1
+
+[node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1087364272]
+layer = 2
+
+[node name="DrawPileView" parent="CardPileViews" unique_id=1773566303 instance=ExtResource("15_d3f7e")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DiscardPileView" parent="CardPileViews" unique_id=111660844 instance=ExtResource("15_d3f7e")]
+unique_name_in_owner = true
+visible = false

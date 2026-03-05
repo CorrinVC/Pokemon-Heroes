@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://gq1fsuugv7ij"]
+
+[ext_resource type="Script" uid="uid://b1ksf1mf246v4" path="res://Cards/UI/CardPileView.gd" id="1_o7y2m"]
+[ext_resource type="PackedScene" uid="uid://by5cs38ga7csu" path="res://Cards/UI/CardVisuals.tscn" id="1_s5772"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7y2m"]
+font_size = 64
+
+[node name="CardPileView" type="Control" unique_id=1773566303]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7y2m")
+
+[node name="BackgroundBlur" type="ColorRect" parent="." unique_id=1744551275]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3388666, 0.026000006, 0.52, 0.8627451)
+
+[node name="CardViewMargins" type="MarginContainer" parent="." unique_id=1661074781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CardViewLayout" type="VBoxContainer" parent="CardViewMargins" unique_id=1959584879]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CardPileTitle" type="Label" parent="CardViewMargins/CardViewLayout" unique_id=599444821]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Card Pile"
+label_settings = SubResource("LabelSettings_o7y2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardScrollContainer" type="ScrollContainer" parent="CardViewMargins/CardViewLayout" unique_id=625984597]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+tile_scroll_hint = true
+
+[node name="CardGridContainer" type="GridContainer" parent="CardViewMargins/CardViewLayout/CardScrollContainer" unique_id=1939045378]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/v_separation = 32
+columns = 6
+
+[node name="CardVisuals" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=893694358 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals2" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=965217057 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals3" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=184623665 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals4" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=2116039722 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals5" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=1305118372 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals6" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=154620616 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals7" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=746944718 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals8" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=1961882503 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals9" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=2101309476 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals10" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=955590303 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals11" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=435054851 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="CardVisuals12" parent="CardViewMargins/CardViewLayout/CardScrollContainer/CardGridContainer" unique_id=198217603 instance=ExtResource("1_s5772")]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="CardViewMargins" unique_id=1569062899]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"

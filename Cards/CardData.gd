@@ -22,6 +22,8 @@ enum Target {
 @export_multiline var cardText: String
 
 func playCard(targets: Array[Area2D]) -> void:
+	EventBus.cardPlayed.emit(self)
+	
 	var cardTargets: Array[Creature] = getCardTargets(targets)
 	for creature in cardTargets:
 		creature.creatureStats.takeDamage(2)
