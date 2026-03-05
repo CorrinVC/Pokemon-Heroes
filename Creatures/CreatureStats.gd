@@ -11,6 +11,8 @@ const MAX_SIZE: int = 3
 
 @export_group("Battle Stats")
 @export var maxHealth: int = 10
+@export var energyType: CardTypes.EnergyType
+@export var energyPerTurn: int = 1
 
 var currentHealth: int: set = setHealth
 var currentProtect: int: set = setProtect

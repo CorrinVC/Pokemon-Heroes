@@ -40,5 +40,5 @@ func onBoundingBoxMouseEntered() -> void:
 	nameLabel.show()
 
 func onBoundingBoxMouseExited() -> void:
-	#nameLabel.hide()
+	nameLabel.hide()
 	pass

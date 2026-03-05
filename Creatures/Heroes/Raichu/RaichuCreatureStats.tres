@@ -7,4 +7,6 @@
 script = ExtResource("2_ng4sw")
 creatureName = "Raichu"
 creatureSprite = ExtResource("1_ng4sw")
+energyType = 3
+energyPerTurn = 3
 metadata/_custom_type_script = "uid://hhi7qg6546tf"

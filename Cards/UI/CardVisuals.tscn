@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://by5cs38ga7csu"]
 
-[ext_resource type="Script" uid="uid://cutw8dlp77hej" path="res://Cards/CardVisuals.gd" id="1_5ayha"]
+[ext_resource type="Script" uid="uid://cutw8dlp77hej" path="res://Cards/UI/CardVisuals.gd" id="1_5ayha"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ayha"]
 bg_color = Color(1, 1, 0.39999998, 1)

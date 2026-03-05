@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b08l1filbqkwg"]
 
 [ext_resource type="Script" uid="uid://din4vpceyuu1v" path="res://Stages/Battle/UI/BattleCard.gd" id="1_r07iu"]
-[ext_resource type="PackedScene" uid="uid://by5cs38ga7csu" path="res://Cards/CardVisuals.tscn" id="2_4kl4j"]
+[ext_resource type="PackedScene" uid="uid://by5cs38ga7csu" path="res://Cards/UI/CardVisuals.tscn" id="2_4kl4j"]
 [ext_resource type="LabelSettings" uid="uid://b7c56s40ajfuv" path="res://Assets/LabelSettings.tres" id="2_qjmey"]
 [ext_resource type="Script" uid="uid://ddq0obdvsqu0a" path="res://Stages/Battle/UI/BattleCardStateMachine.gd" id="3_qjmey"]
 [ext_resource type="Script" uid="uid://ccj72n00nwhgj" path="res://Stages/Battle/UI/Card States/CardBaseState.gd" id="4_fklk5"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dah5h1fto0jw7"]
+
+[ext_resource type="Script" uid="uid://dv7stbqg60mye" path="res://Cards/UI/CardPileButton.gd" id="1_ltwdi"]
+
+[node name="CardPileButton" type="Button" unique_id=702107887]
+custom_minimum_size = Vector2(80, 40)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Pile"
+script = ExtResource("1_ltwdi")

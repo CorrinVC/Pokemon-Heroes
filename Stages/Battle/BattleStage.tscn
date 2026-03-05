@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b177ld3irkowa"]
 
+[ext_resource type="Script" uid="uid://b2pk2eghp8lvo" path="res://Stages/Battle/Battle.gd" id="1_7wd3v"]
 [ext_resource type="Texture2D" uid="uid://cu7ox04s438gt" path="res://Stages/Battle/Backgrounds/Background00.png" id="1_cw4v3"]
 [ext_resource type="PackedScene" uid="uid://cpa7jsu7bnwhu" path="res://Creatures/Creature.tscn" id="2_qow1e"]
 [ext_resource type="Script" uid="uid://bl1ngjkfoksv2" path="res://Creatures/Heroes/HeroCreature.gd" id="3_2hfsl"]
@@ -10,6 +11,9 @@
 [ext_resource type="Resource" uid="uid://buavik1g52boq" path="res://Creatures/Enemies/Colorless/Rattata/RattataStats.tres" id="5_xjnxk"]
 [ext_resource type="Resource" uid="uid://cw7uq6b41eg4t" path="res://Cards/Raichu/RaichuCard00.tres" id="6_ulux6"]
 [ext_resource type="Script" uid="uid://cfbydmegr8u65" path="res://Stages/Battle/UI/Hand.gd" id="7_2hfsl"]
+[ext_resource type="Script" uid="uid://bih2d7vn3se8v" path="res://Stages/Battle/Logic/HeroLogic.gd" id="7_i4p0l"]
+[ext_resource type="Script" uid="uid://ck8g5sltnmheb" path="res://Stages/Battle/UI/BattleUI.gd" id="8_xdnx7"]
+[ext_resource type="PackedScene" uid="uid://dah5h1fto0jw7" path="res://Cards/UI/CardPileButton.tscn" id="11_fa073"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a021t"]
 size = Vector2(1280, 464)
@@ -25,6 +29,7 @@ _data = [Vector2(0, -5), 0.0, 0.0, 0, 0, Vector2(0.5, 1.4901161e-08), 20.0, 20.0
 point_count = 3
 
 [node name="BattleStage" type="Node2D" unique_id=1882334100]
+script = ExtResource("1_7wd3v")
 
 [node name="BattleBackground" type="Sprite2D" parent="." unique_id=139411810]
 scale = Vector2(4, 4)
@@ -38,10 +43,15 @@ position = Vector2(640, 232)
 shape = SubResource("RectangleShape2D_a021t")
 
 [node name="HeroCreature" parent="." unique_id=1289275086 groups=["targetAll", "targetFriendly"] instance=ExtResource("2_qow1e")]
+unique_name_in_owner = true
 position = Vector2(260, 380)
 script = ExtResource("3_2hfsl")
 heroStats = ExtResource("4_xjnxk")
 creatureStats = ExtResource("3_gafhu")
+
+[node name="HeroLogic" type="Node" parent="." unique_id=1471228859]
+unique_name_in_owner = true
+script = ExtResource("7_i4p0l")
 
 [node name="Summons" type="Node2D" parent="." unique_id=1014582706]
 
@@ -58,6 +68,8 @@ collision_layer = 8
 creatureStats = ExtResource("5_xjnxk")
 
 [node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696 groups=["uiLayer"]]
+unique_name_in_owner = true
+script = ExtResource("8_xdnx7")
 
 [node name="Hand" type="Control" parent="BattleUI" unique_id=1672963127 node_paths=PackedStringArray("heroCreature")]
 layout_mode = 3
@@ -92,3 +104,58 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 cardData = ExtResource("6_ulux6")
+
+[node name="DrawPileButton" parent="BattleUI" unique_id=702107887 node_paths=PackedStringArray("cardCountLabel") instance=ExtResource("11_fa073")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "Draw"
+cardCountLabel = NodePath("DrawPileLabel")
+
+[node name="DrawPileLabel" type="Label" parent="BattleUI/DrawPileButton" unique_id=37869428]
+custom_minimum_size = Vector2(40, 25)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -5.0
+grow_horizontal = 2
+horizontal_alignment = 1
+
+[node name="DiscardPileButton" parent="BattleUI" unique_id=1304718207 node_paths=PackedStringArray("cardCountLabel") instance=ExtResource("11_fa073")]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Discard"
+cardCountLabel = NodePath("DiscardPileLabel")
+
+[node name="DiscardPileLabel" type="Label" parent="BattleUI/DiscardPileButton" unique_id=2057502558]
+custom_minimum_size = Vector2(40, 25)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -5.0
+grow_horizontal = 2
+horizontal_alignment = 1

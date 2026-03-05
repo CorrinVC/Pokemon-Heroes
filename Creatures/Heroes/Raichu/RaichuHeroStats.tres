@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_th3de"]
 script = ExtResource("4_vpuqs")
-cardList = Array[ExtResource("2_44jne")]([ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux")])
+cardList = Array[ExtResource("2_44jne")]([ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux"), ExtResource("3_elmux")])
 metadata/_custom_type_script = "uid://b54sf3vi1pp6a"
 
 [resource]
