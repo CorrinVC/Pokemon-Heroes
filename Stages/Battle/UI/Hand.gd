@@ -22,6 +22,7 @@ func addCard(cardData: CardData) -> void:
 	
 	add_child(newBattleCard)
 	newBattleCard.cardData = cardData
+	newBattleCard.creatureStats = heroCreature.creatureStats
 	newBattleCard.reparentRequested.connect(onCardReparentRequested)
 
 func onCardReparentRequested(battleCard: BattleCard) -> void:

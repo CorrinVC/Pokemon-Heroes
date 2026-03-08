@@ -48,4 +48,14 @@ func setBackgroundColor() -> void:
 	
 	panelStyleBox.bg_color = backgroundColor
 	panelStyleBox.border_color = borderColor
-	
+
+func setPlayable(playable: bool) -> void:
+	if not playable:
+		setLabelColors(Color.WEB_MAROON)
+	else:
+		setLabelColors(Color.BLACK)
+
+func setLabelColors(color: Color) -> void:
+	nameLabel.label_settings.font_color = color
+	cardTypeLabel.label_settings.font_color = color
+	cardTextLabel.label_settings.font_color = color

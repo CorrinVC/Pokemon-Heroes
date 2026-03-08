@@ -9,6 +9,6 @@ func _ready() -> void:
 
 func startBattle() -> void:
 	battleUI.heroStats = heroCreature.heroStats
-	heroLogic.startBattle(heroCreature.heroStats)
+	heroLogic.startBattle(heroCreature)
 	battleUI.initializeCardPiles()
 	

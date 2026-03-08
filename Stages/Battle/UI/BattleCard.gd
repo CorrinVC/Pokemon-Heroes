@@ -5,6 +5,7 @@ signal reparentRequested(battleCard: BattleCard)
 const BASE_SPEED: float = 0.1
 
 @export var cardData: CardData : set = setCardData
+@export var creatureStats: CreatureStats : set = setCreatureStats
 
 @onready var cardVisuals: CardVisuals = %CardVisuals
 @onready var boundingBox: Area2D = %BoundingBox
@@ -15,6 +16,8 @@ const BASE_SPEED: float = 0.1
 var originalHandIndex: int
 var dragOffset: Vector2
 var tween: Tween
+
+var playable: bool = true : set = setPlayable
 
 func _ready() -> void:
 	cardStateMachine.initStateMachine(self)
@@ -29,6 +32,15 @@ func setCardData(value: CardData) -> void:
 	cardData = value
 	cardVisuals.cardData = cardData
 	updateBoundingBoxCollisionMask()
+
+func setCreatureStats(value: CreatureStats) -> void:
+	creatureStats = value
+	creatureStats.statsChanged.connect(onCreatureStatsChanged)
+	onCreatureStatsChanged()
+
+func setPlayable(value: bool) -> void:
+	playable = value
+	cardVisuals.setPlayable(playable)
 
 func setScale(newScale: float, speed: float) -> void:
 	if scale == Vector2.ONE * newScale:
@@ -60,9 +72,11 @@ func play() -> void:
 	tween.tween_property(self, "scale", Vector2.ONE * 0.75, BASE_SPEED).set_ease(Tween.EASE_OUT)
 	tween.finished.connect(func() -> void:
 		cardData.playCard(cardTargets)
-		#cardPlayed.emit()
 		queue_free()
 	)
+
+func onCreatureStatsChanged() -> void:
+	playable = creatureStats.energyCount >= cardData.energyCost
 
 func onGuiInput(event: InputEvent) -> void:
 	cardStateMachine.onGuiInput(event)

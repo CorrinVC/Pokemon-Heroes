@@ -16,6 +16,7 @@ const MAX_SIZE: int = 3
 
 var currentHealth: int: set = setHealth
 var currentProtect: int: set = setProtect
+var energyCount: int: set = setEnergy
 
 func setHealth(value: int) -> void:
 	currentHealth = value
@@ -25,6 +26,10 @@ func setProtect(value: int) -> void:
 	currentProtect = value
 	statsChanged.emit()
 
+func setEnergy(value: int) -> void:
+	energyCount = clampi(value, 0, value)
+	statsChanged.emit()
+
 func takeDamage(damage: int) -> void:
 	currentHealth = clampi(currentHealth - damage, 0, maxHealth)
 
@@ -32,5 +37,6 @@ func createInstance() -> CreatureStats:
 	var instance: CreatureStats = self.duplicate()
 	instance.currentHealth = maxHealth
 	instance.currentProtect = 0
+	instance.energyCount = energyPerTurn
 	
 	return instance

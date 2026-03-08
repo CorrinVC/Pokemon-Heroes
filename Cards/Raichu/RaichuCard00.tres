@@ -6,6 +6,7 @@
 script = ExtResource("1_dmvfw")
 cardName = "Raichu Card"
 energyType = 3
+energyCost = 1
 target = 4
 cardText = "Raichu Attack"
 metadata/_custom_type_script = "uid://llvymkxfovph"

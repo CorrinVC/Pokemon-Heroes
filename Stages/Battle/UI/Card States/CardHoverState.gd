@@ -11,6 +11,9 @@ func exit() -> void:
 	battleCard.setScale(BASE_SCALE, BattleCard.BASE_SPEED)
 
 func onGuiInput(event: InputEvent) -> void:
+	if not battleCard.playable:
+		return
+	
 	if event.is_action_pressed(InputActions.LEFT_MOUSE):
 		transitionRequested.emit(self, State.CLICKED)
 

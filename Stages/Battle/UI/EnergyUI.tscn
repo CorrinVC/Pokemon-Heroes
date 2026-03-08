@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://chl6og1a3wj4i"]
+
+[ext_resource type="Texture2D" uid="uid://b5yw2o5gfu1k2" path="res://icon.svg" id="1_wvlke"]
+[ext_resource type="Script" uid="uid://cbyj0hvdi5oyu" path="res://Stages/Battle/UI/EnergyUI.gd" id="2_1qpnm"]
+
+[node name="EnergyUI" type="TextureRect" unique_id=1256102245]
+custom_minimum_size = Vector2(64, 64)
+texture = ExtResource("1_wvlke")
+expand_mode = 1
+script = ExtResource("2_1qpnm")
+
+[node name="EnergyCountLabel" type="Label" parent="." unique_id=1828598126]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_top = 54.0
+offset_right = 30.0
+offset_bottom = 77.0
+grow_horizontal = 0
+text = "69"

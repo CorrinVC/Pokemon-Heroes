@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bih2d7vn3se8v" path="res://Stages/Battle/Logic/HeroLogic.gd" id="7_i4p0l"]
 [ext_resource type="Script" uid="uid://ck8g5sltnmheb" path="res://Stages/Battle/UI/BattleUI.gd" id="8_xdnx7"]
 [ext_resource type="PackedScene" uid="uid://dah5h1fto0jw7" path="res://Cards/UI/CardPileButton.tscn" id="11_fa073"]
+[ext_resource type="PackedScene" uid="uid://chl6og1a3wj4i" path="res://Stages/Battle/UI/EnergyUI.tscn" id="11_pwiug"]
 [ext_resource type="PackedScene" uid="uid://gq1fsuugv7ij" path="res://Cards/UI/CardPileView.tscn" id="15_d3f7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a021t"]
@@ -68,9 +69,21 @@ position = Vector2(900, 380)
 collision_layer = 8
 creatureStats = ExtResource("5_xjnxk")
 
-[node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696 groups=["uiLayer"]]
+[node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696 node_paths=PackedStringArray("heroCreature") groups=["uiLayer"]]
 unique_name_in_owner = true
 script = ExtResource("8_xdnx7")
+heroCreature = NodePath("../HeroCreature")
+
+[node name="EnergyUI" parent="BattleUI" unique_id=1256102245 instance=ExtResource("11_pwiug")]
+unique_name_in_owner = true
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 104.0
+grow_vertical = 2
 
 [node name="Hand" type="Control" parent="BattleUI" unique_id=1672963127 node_paths=PackedStringArray("heroCreature")]
 layout_mode = 3
