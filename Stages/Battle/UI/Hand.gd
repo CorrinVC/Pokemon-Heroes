@@ -1,6 +1,8 @@
-extends Control
+class_name Hand extends Control
 
 const BATTLE_CARD_SCENE: PackedScene = preload("uid://b08l1filbqkwg")
+const DRAW_PILE_RELATIVE_POSITION: Vector2 = Vector2(-600, -75)
+const DISCARD_PILE_RELATIVE_POSITION: Vector2 = Vector2(600, -160)
 
 @export var heroCreature: HeroCreature
 
@@ -8,22 +10,37 @@ const BATTLE_CARD_SCENE: PackedScene = preload("uid://b08l1filbqkwg")
 @export var handRotationCurve: Curve
 
 func _ready() -> void:
+	clearHand()
+	
+	#for i in range(heroCreature.heroStats.cardsPerTurn):
+		#addCard(heroCreature.heroStats.deck.drawCard())
+	EventBus.heroHandDiscarded.connect(clearHand)
+	child_order_changed.connect(onHandChanged)
+
+func clearHand() -> void:
 	for node in get_children():
 		node.queue_free()
-	
-	for i in range(heroCreature.heroStats.cardsPerTurn):
-		addCard(heroCreature.heroStats.deck.drawCard())
-	
-	child_order_changed.connect(onHandChanged)
 
 func addCard(cardData: CardData) -> void:
 	var newBattleCard: BattleCard = \
 		BATTLE_CARD_SCENE.instantiate() as BattleCard
 	
+	newBattleCard.global_position = DRAW_PILE_RELATIVE_POSITION
 	add_child(newBattleCard)
 	newBattleCard.cardData = cardData
 	newBattleCard.creatureStats = heroCreature.creatureStats
 	newBattleCard.reparentRequested.connect(onCardReparentRequested)
+
+func discardCard(battleCard: BattleCard) -> void:
+	var tween: Tween = create_tween().set_parallel()
+	var tweenDuration: float = 0.4
+	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(battleCard, "position", \
+		DISCARD_PILE_RELATIVE_POSITION, tweenDuration)
+	tween.tween_property(battleCard, "scale", Vector2.ONE * 0.1, tweenDuration)
+	tween.tween_property(battleCard, "rotation_degrees", 180, tweenDuration)
+	
+	tween.finished.connect(func() -> void: battleCard.modulate = Color.TRANSPARENT)
 
 func onCardReparentRequested(battleCard: BattleCard) -> void:
 	if battleCard in get_children():

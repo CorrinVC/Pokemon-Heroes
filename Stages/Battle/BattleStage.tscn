@@ -51,9 +51,10 @@ script = ExtResource("3_2hfsl")
 heroStats = ExtResource("4_xjnxk")
 creatureStats = ExtResource("3_gafhu")
 
-[node name="HeroLogic" type="Node" parent="." unique_id=1471228859]
+[node name="HeroLogic" type="Node" parent="." unique_id=1471228859 node_paths=PackedStringArray("hand")]
 unique_name_in_owner = true
 script = ExtResource("7_i4p0l")
+hand = NodePath("../BattleUI/Hand")
 
 [node name="Summons" type="Node2D" parent="." unique_id=1014582706]
 
@@ -173,6 +174,22 @@ offset_right = 20.0
 offset_bottom = -5.0
 grow_horizontal = 2
 horizontal_alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="BattleUI" unique_id=1533569955]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 40)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -240.0
+offset_right = -20.0
+offset_bottom = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "End Turn"
 
 [node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1087364272]
 layer = 2
