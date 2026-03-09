@@ -37,6 +37,6 @@ func createInstance() -> CreatureStats:
 	var instance: CreatureStats = self.duplicate()
 	instance.currentHealth = maxHealth
 	instance.currentProtect = 0
-	instance.energyCount = energyPerTurn
+	instance.energyCount = 0
 	
 	return instance

@@ -6,7 +6,4 @@ func setHeroStats(value: HeroStats) -> void:
 	if not value:
 		return
 	
-	if not is_node_ready():
-		await ready
-	
 	heroStats = value.createInstance()

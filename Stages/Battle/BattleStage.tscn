@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cpa7jsu7bnwhu" path="res://Creatures/Creature.tscn" id="2_qow1e"]
 [ext_resource type="Script" uid="uid://bl1ngjkfoksv2" path="res://Creatures/Heroes/HeroCreature.gd" id="3_2hfsl"]
 [ext_resource type="Resource" uid="uid://dc7gj6tlbn2m7" path="res://Creatures/Heroes/Raichu/RaichuCreatureStats.tres" id="3_gafhu"]
-[ext_resource type="Resource" uid="uid://bwoe4wghimy6p" path="res://Creatures/Summons/Electric/Pikachu/PikachuStats.tres" id="4_2hfsl"]
+[ext_resource type="Resource" uid="uid://bwoe4wghimy6p" path="res://Creatures/Summons/Electric/Pikachu/PikachuCreatureStats.tres" id="4_2hfsl"]
 [ext_resource type="Resource" uid="uid://ddr40vqdiv78k" path="res://Creatures/Heroes/Raichu/RaichuHeroStats.tres" id="4_xjnxk"]
 [ext_resource type="PackedScene" uid="uid://b08l1filbqkwg" path="res://Stages/Battle/UI/BattleCard.tscn" id="5_a021t"]
-[ext_resource type="Resource" uid="uid://buavik1g52boq" path="res://Creatures/Enemies/Colorless/Rattata/RattataStats.tres" id="5_xjnxk"]
+[ext_resource type="Resource" uid="uid://buavik1g52boq" path="res://Creatures/Enemies/Colorless/Rattata/RattataCreatureStats.tres" id="5_xjnxk"]
 [ext_resource type="Resource" uid="uid://cw7uq6b41eg4t" path="res://Cards/Raichu/RaichuCard00.tres" id="6_ulux6"]
 [ext_resource type="Script" uid="uid://cfbydmegr8u65" path="res://Stages/Battle/UI/Hand.gd" id="7_2hfsl"]
 [ext_resource type="Script" uid="uid://bih2d7vn3se8v" path="res://Stages/Battle/Logic/HeroLogic.gd" id="7_i4p0l"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bev8ocoee2uhv" path="res://Creatures/Enemies/EnemyCreature.gd" id="10_60j37"]
 [ext_resource type="PackedScene" uid="uid://dah5h1fto0jw7" path="res://Cards/UI/CardPileButton.tscn" id="11_fa073"]
 [ext_resource type="PackedScene" uid="uid://chl6og1a3wj4i" path="res://Stages/Battle/UI/EnergyUI.tscn" id="11_pwiug"]
+[ext_resource type="PackedScene" uid="uid://ymsspvnsmcin" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataActionPicker.tscn" id="13_2xma5"]
 [ext_resource type="PackedScene" uid="uid://gq1fsuugv7ij" path="res://Cards/UI/CardPileView.tscn" id="15_d3f7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a021t"]
@@ -54,7 +55,8 @@ position = Vector2(260, 380)
 script = ExtResource("3_2hfsl")
 heroStats = ExtResource("4_xjnxk")
 creatureStats = ExtResource("3_gafhu")
-fieldPosition = 1
+fieldColumn = 1
+fieldRow = 1
 
 [node name="HeroLogic" type="Node" parent="." unique_id=1471228859 node_paths=PackedStringArray("hand")]
 unique_name_in_owner = true
@@ -69,7 +71,9 @@ script = ExtResource("8_3x0ct")
 position = Vector2(440, 380)
 collision_layer = 4
 script = ExtResource("9_irrbi")
+summonStats = null
 creatureStats = ExtResource("4_2hfsl")
+fieldColumn = 1
 
 [node name="Enemies" type="Node2D" parent="." unique_id=398313929]
 unique_name_in_owner = true
@@ -79,8 +83,9 @@ script = ExtResource("9_1yimy")
 position = Vector2(900, 380)
 collision_layer = 8
 script = ExtResource("10_60j37")
+actionPickerScene = ExtResource("13_2xma5")
 creatureStats = ExtResource("5_xjnxk")
-fieldPosition = 4
+fieldRow = 1
 
 [node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696 node_paths=PackedStringArray("heroCreature") groups=["uiLayer"]]
 unique_name_in_owner = true
