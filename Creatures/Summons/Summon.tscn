@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cre2fx6pkrc50"]
 
-[ext_resource type="Script" uid="uid://b821cttcvijqf" path="res://Creatures/Summons/Summon.gd" id="1_gwulo"]
+[ext_resource type="Script" uid="uid://b821cttcvijqf" path="res://Creatures/Summons/SummonCreature.gd" id="1_gwulo"]
 [ext_resource type="Texture2D" uid="uid://dxd781hvotndp" path="res://Creatures/Summons/Electric/Pikachu/PikachuSprite.png" id="1_v5hmg"]
 [ext_resource type="LabelSettings" uid="uid://b7c56s40ajfuv" path="res://Assets/LabelSettings.tres" id="2_gwulo"]
 

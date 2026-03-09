@@ -3,7 +3,17 @@ class_name Creature extends Area2D
 const BOUNDING_BOX_SIZE: int = 56
 const BOUNDING_BOX_OFFSET: int = 28
 
+enum FieldPosition {
+	BACK_TOP,
+	BACK_CENTER,
+	BACK_BOTTOM,
+	FRONT_TOP,
+	FRONT_CENTER,
+	FRONT_BOTTOM
+}
+
 @export var creatureStats: CreatureStats : set = setStats
+@export var fieldPosition: FieldPosition
 
 @onready var boundingBox: CollisionShape2D = %BoundingBox
 @onready var creatureSprite: Sprite2D = %CreatureSprite

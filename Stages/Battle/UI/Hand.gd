@@ -60,6 +60,7 @@ func onHandChanged() -> void:
 		if get_child_count() == 1:
 			index = 0.5
 		
+		# Set card position & rotation along curve based on hand index
 		var cardXPosition: float = 75 * (i - get_child_count() / 2.0)
 		var cardYPosition: float = -110 - handPositionCurve.sample(index)
 		var newPosition: Vector2 = Vector2(cardXPosition, cardYPosition)

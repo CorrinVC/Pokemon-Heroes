@@ -8,5 +8,6 @@ script = ExtResource("1_gx24v")
 creatureName = "Pikachu"
 creatureSprite = ExtResource("1_fksdo")
 size = 2
+maxHealth = 50
 energyType = 3
 metadata/_custom_type_script = "uid://hhi7qg6546tf"

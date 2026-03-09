@@ -14,11 +14,13 @@ var creatureStats: CreatureStats
 var heroStats: HeroStats
 
 func _ready() -> void:
+	EventBus.heroHandDrawn.connect(onHeroHandDrawn)
+	endTurnButton.pressed.connect(onEndTurnButtonPressed)
+	
 	drawPileButton.pressed.connect(
 		drawPileView.showCurrentView.bind("Draw Pile"))
 	discardPileButton.pressed.connect(
 		discardPileView.showCurrentView.bind("Discard Pile"))
-	endTurnButton.pressed.connect(EventBus.heroTurnEnded.emit)
 
 func setHero(value: HeroCreature) -> void:
 	heroCreature = value
@@ -35,3 +37,10 @@ func initializeCardPiles() -> void:
 	drawPileView.cardPile = heroStats.drawPile
 	discardPileButton.cardPile = heroStats.discardPile
 	discardPileView.cardPile = heroStats.discardPile
+
+func onHeroHandDrawn() -> void:
+	endTurnButton.disabled = false
+
+func onEndTurnButtonPressed() -> void:
+	endTurnButton.disabled = true
+	EventBus.heroTurnEnded.emit()

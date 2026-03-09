@@ -12,7 +12,11 @@
 [ext_resource type="Resource" uid="uid://cw7uq6b41eg4t" path="res://Cards/Raichu/RaichuCard00.tres" id="6_ulux6"]
 [ext_resource type="Script" uid="uid://cfbydmegr8u65" path="res://Stages/Battle/UI/Hand.gd" id="7_2hfsl"]
 [ext_resource type="Script" uid="uid://bih2d7vn3se8v" path="res://Stages/Battle/Logic/HeroLogic.gd" id="7_i4p0l"]
+[ext_resource type="Script" uid="uid://bd2cordmber84" path="res://Stages/Battle/Logic/SummonLogic.gd" id="8_3x0ct"]
 [ext_resource type="Script" uid="uid://ck8g5sltnmheb" path="res://Stages/Battle/UI/BattleUI.gd" id="8_xdnx7"]
+[ext_resource type="Script" uid="uid://b8poq6ueclx54" path="res://Stages/Battle/Logic/EnemyLogic.gd" id="9_1yimy"]
+[ext_resource type="Script" uid="uid://b821cttcvijqf" path="res://Creatures/Summons/SummonCreature.gd" id="9_irrbi"]
+[ext_resource type="Script" uid="uid://bev8ocoee2uhv" path="res://Creatures/Enemies/EnemyCreature.gd" id="10_60j37"]
 [ext_resource type="PackedScene" uid="uid://dah5h1fto0jw7" path="res://Cards/UI/CardPileButton.tscn" id="11_fa073"]
 [ext_resource type="PackedScene" uid="uid://chl6og1a3wj4i" path="res://Stages/Battle/UI/EnergyUI.tscn" id="11_pwiug"]
 [ext_resource type="PackedScene" uid="uid://gq1fsuugv7ij" path="res://Cards/UI/CardPileView.tscn" id="15_d3f7e"]
@@ -50,6 +54,7 @@ position = Vector2(260, 380)
 script = ExtResource("3_2hfsl")
 heroStats = ExtResource("4_xjnxk")
 creatureStats = ExtResource("3_gafhu")
+fieldPosition = 1
 
 [node name="HeroLogic" type="Node" parent="." unique_id=1471228859 node_paths=PackedStringArray("hand")]
 unique_name_in_owner = true
@@ -57,18 +62,25 @@ script = ExtResource("7_i4p0l")
 hand = NodePath("../BattleUI/Hand")
 
 [node name="Summons" type="Node2D" parent="." unique_id=1014582706]
+unique_name_in_owner = true
+script = ExtResource("8_3x0ct")
 
 [node name="SummonCreature" parent="Summons" unique_id=1303052298 groups=["targetAll", "targetFriendly"] instance=ExtResource("2_qow1e")]
 position = Vector2(440, 380)
 collision_layer = 4
+script = ExtResource("9_irrbi")
 creatureStats = ExtResource("4_2hfsl")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=398313929]
+unique_name_in_owner = true
+script = ExtResource("9_1yimy")
 
 [node name="EnemyCreature" parent="Enemies" unique_id=1181621145 groups=["targetAll", "targetHostile"] instance=ExtResource("2_qow1e")]
 position = Vector2(900, 380)
 collision_layer = 8
+script = ExtResource("10_60j37")
 creatureStats = ExtResource("5_xjnxk")
+fieldPosition = 4
 
 [node name="BattleUI" type="CanvasLayer" parent="." unique_id=1746278696 node_paths=PackedStringArray("heroCreature") groups=["uiLayer"]]
 unique_name_in_owner = true
@@ -189,6 +201,7 @@ offset_right = -20.0
 offset_bottom = -200.0
 grow_horizontal = 0
 grow_vertical = 0
+disabled = true
 text = "End Turn"
 
 [node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1087364272]

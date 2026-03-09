@@ -12,7 +12,6 @@ var heroStats: HeroStats
 
 func _ready() -> void:
 	EventBus.cardPlayed.connect(onCardPlayed)
-	EventBus.heroTurnEnded.connect(endTurn)
 
 func startBattle(hero: HeroCreature) -> void:
 	heroCreature = hero
@@ -20,6 +19,7 @@ func startBattle(hero: HeroCreature) -> void:
 	creatureStats = heroCreature.creatureStats
 	heroStats = heroCreature.heroStats
 	
+	# Card Piles
 	heroStats.drawPile = heroStats.deck.duplicate(true)
 	heroStats.drawPile.shuffle()
 	heroStats.discardPile = CardPile.new()
@@ -44,6 +44,7 @@ func drawHand(cardCount: int) -> void:
 	for i in range(cardCount):
 		tween.tween_callback(drawCard)
 		tween.tween_interval(CARD_DRAW_INTERVAL)
+	tween.finished.connect(EventBus.heroHandDrawn.emit)
 
 func drawCard() -> void:
 	reshuffleDeckFromDiscard()
