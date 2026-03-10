@@ -15,4 +15,5 @@ func isPerformable() -> bool:
 
 func performAction() -> void:
 	EventBus.enemyActionCompleted.emit(enemy)
-	print_debug(enemy.creatureName + " performing " + id)
+	var targetName: String = "No Target" if not target else target.creatureName
+	print_debug(enemy.creatureName + " performing " + id + " on " + targetName)

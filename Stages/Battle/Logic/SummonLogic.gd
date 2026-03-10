@@ -3,7 +3,18 @@ class_name SummonLogic extends Node2D
 var actingSummons: Array[SummonCreature] = []
 
 func _ready() -> void:
+	EventBus.heroHandDrawn.connect(generateSummonsEnergy)
 	EventBus.summonActionsCompleted.connect(onSummonActionsCompleted)
+
+func updateSummonTargets(enemies: Dictionary[Vector2, Creature]) -> void:
+	for summon: SummonCreature in get_children():
+		summon.setTarget(summon.findTarget(enemies))
+
+func generateSummonsEnergy() -> void:
+	var energyGenerated: int = 0
+	for summon: SummonCreature in get_children():
+		energyGenerated += summon.creatureStats.energyPerTurn
+	EventBus.summonEnergyGenerated.emit(energyGenerated)
 
 func startTurn() -> void:
 	if get_child_count() == 0:

@@ -19,6 +19,9 @@ func onStatsChanged() -> void:
 	super.onStatsChanged()
 	updateAction()
 
+func setTarget(target: Creature) -> void:
+	enemyActionPicker.target = target
+
 func setupAI() -> void:
 	if enemyActionPicker:
 		enemyActionPicker.queue_free()

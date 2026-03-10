@@ -8,4 +8,5 @@ var target: Creature
 
 func performAction() -> void:
 	EventBus.summonActionsCompleted.emit(summon)
-	print_debug(summon.creatureName + " performing " + id)
+	var targetName: String = "No Target" if not target else target.creatureName
+	print_debug(summon.creatureName + " performing " + id + " on " + targetName)

@@ -16,6 +16,10 @@ func setSummonStats(value: SummonStats) -> void:
 		if action:
 			action.summon = self
 
+func setTarget(creature: Creature) -> void:
+	for action in actions:
+		action.target = creature
+
 func selectAction() -> void:
 	for action in actions:
 		if creatureStats.energyCount >= action.energyCost:

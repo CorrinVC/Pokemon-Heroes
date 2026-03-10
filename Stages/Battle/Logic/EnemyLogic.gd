@@ -7,6 +7,10 @@ var actingEnemies: Array[EnemyCreature] = []
 func _ready() -> void:
 	EventBus.enemyActionCompleted.connect(onEnemyActionCompleted)
 
+func updateEnemyTargets(enemies: Dictionary[Vector2, Creature]) -> void:
+	for enemy: EnemyCreature in get_children():
+		enemy.setTarget(enemy.findTarget(enemies))
+
 func startTurn() -> void:
 	if get_child_count() == 0:
 		return

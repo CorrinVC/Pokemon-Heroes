@@ -7,6 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x66ry"]
 size = Vector2(168, 168)
 
+[sub_resource type="LabelSettings" id="LabelSettings_66lwe"]
+font_size = 20
+font_color = Color(0, 0.28615704, 0.5506984, 1)
+
 [node name="Creature" type="Area2D" unique_id=1289275086]
 collision_layer = 2
 collision_mask = 16
@@ -22,18 +26,39 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_xwwmf")
 flip_h = true
 
-[node name="NameLabel" type="Label" parent="." unique_id=1800522188]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(100, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=939930050]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -50.0
+offset_left = -60.0
 offset_top = 84.0
-offset_right = 50.0
-offset_bottom = 112.0
+offset_right = 60.0
+offset_bottom = 144.0
 grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1723478782]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ProtectLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1172238630]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(0)"
+label_settings = SubResource("LabelSettings_66lwe")
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1329513300]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "HP: 100/100"
+label_settings = ExtResource("3_8f7uj")
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=1800522188]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 text = "Raichu"
 label_settings = ExtResource("3_8f7uj")
 horizontal_alignment = 1

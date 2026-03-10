@@ -12,6 +12,7 @@ var heroStats: HeroStats
 
 func _ready() -> void:
 	EventBus.cardPlayed.connect(onCardPlayed)
+	EventBus.summonEnergyGenerated.connect(onSummonEnergyGenerated)
 
 func startBattle(hero: HeroCreature) -> void:
 	heroCreature = hero
@@ -25,10 +26,6 @@ func startBattle(hero: HeroCreature) -> void:
 	heroStats.discardPile = CardPile.new()
 	
 	startTurn()
-
-func onCardPlayed(cardData: CardData) -> void:
-	heroStats.discardPile.addCard(cardData)
-	creatureStats.energyCount -= cardData.energyCost
 
 func startTurn() -> void:
 	if creatureStats.currentHealth <= 0:
@@ -59,6 +56,13 @@ func reshuffleDeckFromDiscard() -> void:
 		heroStats.drawPile.addCard(heroStats.discardPile.drawCard())
 	
 	heroStats.drawPile.shuffle()
+
+func onSummonEnergyGenerated(energyGenerated: int) -> void:
+	creatureStats.energyCount += energyGenerated
+
+func onCardPlayed(cardData: CardData) -> void:
+	heroStats.discardPile.addCard(cardData)
+	creatureStats.energyCount -= cardData.energyCost
 
 func endTurn() -> void:
 	discardHand()

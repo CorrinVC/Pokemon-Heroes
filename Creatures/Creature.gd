@@ -12,6 +12,9 @@ enum FieldRow { TOP, CENTER, BOTTOM }
 
 @onready var boundingBox: CollisionShape2D = %BoundingBox
 @onready var creatureSprite: Sprite2D = %CreatureSprite
+
+@onready var protectLabel: Label = %ProtectLabel
+@onready var healthLabel: Label = %HealthLabel
 @onready var nameLabel: Label = %NameLabel
 
 var creatureName: String
@@ -34,12 +37,23 @@ func setStats(value: CreatureStats) -> void:
 	creatureSprite.texture = creatureStats.creatureSprite
 	creatureName = creatureStats.creatureName
 	updateNameLabel()
+	onStatsChanged()
 
 func onStatsChanged() -> void:
-	updateNameLabel()
+	updateStatLabels()
+
+func updateStatLabels() -> void:
+	if creatureStats.currentProtect == 0:
+		protectLabel.text = ""
+	else:
+		protectLabel.text = "(%s)" % creatureStats.currentProtect
+	healthLabel.text = "HP: %s/%s" % [creatureStats.currentHealth, creatureStats.maxHealth]
 
 func updateNameLabel() -> void:
-	nameLabel.text = "%s: %s" % [creatureName, creatureStats.currentHealth]
+	nameLabel.text = "%s" % [creatureName]
+
+func getFieldPosition() -> Vector2:
+	return Vector2(fieldColumn, fieldRow)
 
 func onBoundingBoxMouseEntered() -> void:
 	nameLabel.show()
@@ -47,3 +61,45 @@ func onBoundingBoxMouseEntered() -> void:
 func onBoundingBoxMouseExited() -> void:
 	nameLabel.hide()
 	pass
+
+# Targeting Logic
+
+func findTarget(targets: Dictionary[Vector2, Creature]) -> Creature:
+	var target: Creature = searchFieldRow(fieldRow, targets)
+	
+	if not target:
+		var adjacentRows: Array[Creature.FieldRow] = getAdjacentRows()
+		
+		for row in adjacentRows:
+			target = searchFieldRow(row, targets)
+			
+			if target:
+				break
+	
+	return target
+
+func searchFieldRow(row: Creature.FieldRow, \
+	targets: Dictionary[Vector2, Creature]) -> Creature:
+	var creatureFound: Creature = null
+	
+	var frontLinePosition: Vector2 = \
+		Vector2(Creature.FieldColumn.FRONT, row)
+	var backLinePosition: Vector2 = \
+		Vector2(Creature.FieldColumn.BACK, row)
+	
+	if targets[frontLinePosition]:
+		creatureFound = targets[frontLinePosition]
+	elif targets[backLinePosition]:
+		creatureFound = targets[backLinePosition]
+	
+	return creatureFound
+
+func getAdjacentRows() -> Array[FieldRow]:
+	var adjacentRows: Array[FieldRow] = []
+	match fieldRow:
+		FieldRow.TOP, FieldRow.BOTTOM:
+			adjacentRows = [FieldRow.CENTER]
+		FieldRow.CENTER:
+			adjacentRows = [FieldRow.TOP, FieldRow.BOTTOM]
+	
+	return adjacentRows
