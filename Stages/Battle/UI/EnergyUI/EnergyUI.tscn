@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chl6og1a3wj4i"]
 
 [ext_resource type="Texture2D" uid="uid://b5yw2o5gfu1k2" path="res://icon.svg" id="1_wvlke"]
-[ext_resource type="Script" uid="uid://cbyj0hvdi5oyu" path="res://Stages/Battle/UI/EnergyUI.gd" id="2_1qpnm"]
+[ext_resource type="Script" uid="uid://cbyj0hvdi5oyu" path="res://Stages/Battle/UI/EnergyUI/EnergyUI.gd" id="2_1qpnm"]
 
 [node name="EnergyUI" type="TextureRect" unique_id=1256102245]
 custom_minimum_size = Vector2(64, 64)

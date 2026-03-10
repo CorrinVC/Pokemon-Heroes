@@ -59,7 +59,8 @@ folder_colors={
 "res://Creatures/Enemies/Colorless/": "gray",
 "res://Creatures/Heroes/Raichu/": "yellow",
 "res://Creatures/Summons/Electric/": "yellow",
-"res://Globals/": "green",
+"res://Effects/": "green",
+"res://Globals/": "teal",
 "res://Stages/": "blue"
 }
 

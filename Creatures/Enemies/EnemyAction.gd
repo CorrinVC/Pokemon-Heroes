@@ -4,6 +4,7 @@ class_name EnemyAction extends Node
 @export var energyCost: int = 0
 @export var isChanceBased: bool = true
 @export_range(0.0, 10.0) var chanceWeight: float = 1.0
+@export var intent: EnemyIntent
 
 @onready var accumulatedWeight: float = 0.0
 

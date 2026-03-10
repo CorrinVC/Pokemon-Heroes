@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://dc7gj6tlbn2m7" path="res://Creatures/Heroes/Raichu/RaichuCreatureStats.tres" id="3_gafhu"]
 [ext_resource type="Resource" uid="uid://bwoe4wghimy6p" path="res://Creatures/Summons/Electric/Pikachu/PikachuCreatureStats.tres" id="4_2hfsl"]
 [ext_resource type="Resource" uid="uid://ddr40vqdiv78k" path="res://Creatures/Heroes/Raichu/RaichuHeroStats.tres" id="4_xjnxk"]
-[ext_resource type="PackedScene" uid="uid://b08l1filbqkwg" path="res://Stages/Battle/UI/BattleCard.tscn" id="5_a021t"]
+[ext_resource type="PackedScene" uid="uid://b08l1filbqkwg" path="res://Stages/Battle/UI/BattleCard/BattleCard.tscn" id="5_a021t"]
 [ext_resource type="Resource" uid="uid://buavik1g52boq" path="res://Creatures/Enemies/Colorless/Rattata/RattataCreatureStats.tres" id="5_xjnxk"]
 [ext_resource type="Resource" uid="uid://cw7uq6b41eg4t" path="res://Cards/Raichu/RaichuCard00.tres" id="6_ulux6"]
 [ext_resource type="Script" uid="uid://cfbydmegr8u65" path="res://Stages/Battle/UI/Hand.gd" id="7_2hfsl"]
@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://bev8ocoee2uhv" path="res://Creatures/Enemies/EnemyCreature.gd" id="10_60j37"]
 [ext_resource type="Resource" uid="uid://c43puoqpmc3f" path="res://Creatures/Summons/Electric/Pikachu/PikachuSummonStats.tres" id="10_pcr2t"]
 [ext_resource type="PackedScene" uid="uid://dah5h1fto0jw7" path="res://Cards/UI/CardPileButton.tscn" id="11_fa073"]
-[ext_resource type="PackedScene" uid="uid://chl6og1a3wj4i" path="res://Stages/Battle/UI/EnergyUI.tscn" id="11_pwiug"]
+[ext_resource type="PackedScene" uid="uid://chl6og1a3wj4i" path="res://Stages/Battle/UI/EnergyUI/EnergyUI.tscn" id="11_pwiug"]
 [ext_resource type="PackedScene" uid="uid://ymsspvnsmcin" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataActionPicker.tscn" id="13_2xma5"]
 [ext_resource type="PackedScene" uid="uid://gq1fsuugv7ij" path="res://Cards/UI/CardPileView.tscn" id="15_d3f7e"]
 

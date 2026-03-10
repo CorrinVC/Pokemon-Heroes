@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://d34holduyrih0"]
+
+[ext_resource type="Script" uid="uid://dk5y02po58jiu" path="res://Stages/Battle/UI/IntentUI/IntentUI.gd" id="1_fis13"]
+[ext_resource type="Texture2D" uid="uid://dxd781hvotndp" path="res://Creatures/Summons/Electric/Pikachu/PikachuSprite.png" id="2_tdulj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdulj"]
+font_size = 24
+
+[node name="IntentUI" type="VBoxContainer" unique_id=107729193]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+alignment = 1
+script = ExtResource("1_fis13")
+
+[node name="IntentIcon" type="TextureRect" parent="." unique_id=1049067226]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_tdulj")
+stretch_mode = 5
+
+[node name="ValueTextLabel" type="Label" parent="." unique_id=2107500410]
+unique_name_in_owner = true
+layout_mode = 2
+text = "67"
+label_settings = SubResource("LabelSettings_tdulj")
+horizontal_alignment = 1

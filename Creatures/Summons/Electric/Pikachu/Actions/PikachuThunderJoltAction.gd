@@ -1,9 +1,9 @@
-extends EnemyAction
+extends SummonAction
 
-@export var damage: int = 20
+@export var damage: int = 30
 
 func performAction() -> void:
-	if not enemy or not target:
+	if not summon or not target:
 		super.performAction()
 		return
 	

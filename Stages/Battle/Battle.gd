@@ -26,6 +26,8 @@ func startBattle() -> void:
 	battleUI.heroStats = heroCreature.heroStats
 	updateFieldPositions()
 	
+	enemyLogic.resetEnemyActions()
+	
 	heroLogic.startBattle(heroCreature)
 	battleUI.initializeCardPiles()
 
@@ -39,6 +41,7 @@ func startEnemyTurn() -> void:
 
 func onEnemyTurnEnded() -> void:
 	heroLogic.startTurn()
+	enemyLogic.resetEnemyActions()
 
 func updateFieldPositions() -> void:
 	for summon: SummonCreature in summonLogic.get_children():

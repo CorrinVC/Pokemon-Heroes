@@ -39,6 +39,9 @@ func setStats(value: CreatureStats) -> void:
 	updateNameLabel()
 	onStatsChanged()
 
+func takeDamage(amount: int, factorProtect: bool = true) -> void:
+	creatureStats.takeDamage(amount, factorProtect)
+
 func onStatsChanged() -> void:
 	updateStatLabels()
 

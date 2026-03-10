@@ -34,3 +34,9 @@ func startNextEnemyTurn() -> void:
 func onEnemyActionCompleted(enemy: EnemyCreature) -> void:
 	actingEnemies.erase(enemy)
 	startNextEnemyTurn()
+
+func resetEnemyActions() -> void:
+	for enemy: EnemyCreature in get_children():
+		enemy.currentAction = null
+		enemy.intentUI.show()
+		enemy.updateAction()

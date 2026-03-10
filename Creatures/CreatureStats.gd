@@ -30,7 +30,15 @@ func setEnergy(value: int) -> void:
 	energyCount = clampi(value, 0, value)
 	statsChanged.emit()
 
-func takeDamage(damage: int) -> void:
+func takeDamage(damage: int, factorProtect: bool = true) -> void:
+	if damage <= 0:
+		return
+	
+	var initialDamage: int = damage
+	if factorProtect:
+		damage = clampi(damage - currentProtect, 0, damage)
+		currentProtect = clampi(currentProtect - initialDamage, 0, currentProtect)
+	
 	currentHealth = clampi(currentHealth - damage, 0, maxHealth)
 
 func createInstance() -> CreatureStats:

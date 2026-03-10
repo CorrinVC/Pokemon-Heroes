@@ -3,6 +3,14 @@
 [ext_resource type="Script" uid="uid://cd54hql0lkiq3" path="res://Creatures/Enemies/EnemyActionPicker.gd" id="1_d1khw"]
 [ext_resource type="Script" uid="uid://bqq1s3fl6f44h" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataBiteAction.gd" id="2_fh65l"]
 [ext_resource type="Script" uid="uid://cpnd7g61inxo0" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataTailWhipAction.gd" id="3_c8voo"]
+[ext_resource type="Texture2D" uid="uid://utf4wvoijkyr" path="res://Creatures/Enemies/Colorless/Rattata/RattataSprite.png" id="3_kk1cr"]
+[ext_resource type="Script" uid="uid://cmiu6dy464jig" path="res://Creatures/Enemies/EnemyIntent.gd" id="4_xvks8"]
+
+[sub_resource type="Resource" id="Resource_o7xsc"]
+script = ExtResource("4_xvks8")
+baseText = "20"
+icon = ExtResource("3_kk1cr")
+metadata/_custom_type_script = "uid://cmiu6dy464jig"
 
 [node name="RattataActionPicker" type="Node" unique_id=58975667]
 script = ExtResource("1_d1khw")
@@ -11,6 +19,7 @@ script = ExtResource("1_d1khw")
 script = ExtResource("2_fh65l")
 id = "RattataBite"
 chanceWeight = 3.0
+intent = SubResource("Resource_o7xsc")
 
 [node name="TailWhipAction" type="Node" parent="." unique_id=1167411375]
 script = ExtResource("3_c8voo")

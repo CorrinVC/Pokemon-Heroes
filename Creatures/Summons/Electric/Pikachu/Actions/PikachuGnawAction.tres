@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="SummonAction" format=3 uid="uid://hy5skox305yq"]
+[gd_resource type="Resource" format=3 uid="uid://hy5skox305yq"]
 
-[ext_resource type="Script" uid="uid://b35fxnc8qlvrw" path="res://Creatures/Summons/SummonAction.gd" id="1_xaqcj"]
+[ext_resource type="Script" uid="uid://co3mjlfda3xh6" path="res://Creatures/Summons/Electric/Pikachu/Actions/PikachuGnawAction.gd" id="1_xaqcj"]
 
 [resource]
 script = ExtResource("1_xaqcj")
