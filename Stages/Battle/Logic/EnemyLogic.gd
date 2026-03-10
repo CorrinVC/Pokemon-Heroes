@@ -23,6 +23,8 @@ func startNextEnemyTurn() -> void:
 		EventBus.enemyTurnEnded.emit()
 		return
 	
+	await get_tree().create_timer(0.25).timeout
+	
 	actingEnemies[0].performTurn()
 
 func onEnemyActionCompleted(enemy: EnemyCreature) -> void:

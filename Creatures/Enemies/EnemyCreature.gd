@@ -23,6 +23,9 @@ func setupAI() -> void:
 	if enemyActionPicker:
 		enemyActionPicker.queue_free()
 	
+	if not is_node_ready():
+		await ready
+	
 	var newActionPicker: EnemyActionPicker = \
 		actionPickerScene.instantiate() as EnemyActionPicker
 	add_child(newActionPicker)
@@ -45,7 +48,7 @@ func updateAction() -> void:
 
 func performTurn() -> void:
 	if not currentAction:
-		print_debug("No Current Action")
+		print_debug(creatureName + " has no Current Action")
 		EventBus.enemyActionCompleted.emit(self)
 		return
 	

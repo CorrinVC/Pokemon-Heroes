@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SummonAction" format=3 uid="uid://hy5skox305yq"]
+
+[ext_resource type="Script" uid="uid://b35fxnc8qlvrw" path="res://Creatures/Summons/SummonAction.gd" id="1_xaqcj"]
+
+[resource]
+script = ExtResource("1_xaqcj")
+id = "PikachuGnaw"
+metadata/_custom_type_script = "uid://b35fxnc8qlvrw"

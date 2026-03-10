@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SummonStats" format=3 uid="uid://c43puoqpmc3f"]
+
+[ext_resource type="Script" uid="uid://b35fxnc8qlvrw" path="res://Creatures/Summons/SummonAction.gd" id="1_18256"]
+[ext_resource type="Resource" uid="uid://hy5skox305yq" path="res://Creatures/Summons/Electric/Pikachu/Actions/PikachuGnawAction.tres" id="2_jt7hg"]
+[ext_resource type="Script" uid="uid://bpgxixfqmagv2" path="res://Creatures/Summons/SummonStats.gd" id="2_m74qq"]
+[ext_resource type="Resource" uid="uid://cvfms0d5mnqy4" path="res://Creatures/Summons/Electric/Pikachu/Actions/PikachuThunderJoltAction.tres" id="3_kjps2"]
+
+[resource]
+script = ExtResource("2_m74qq")
+actions = Array[ExtResource("1_18256")]([ExtResource("2_jt7hg"), ExtResource("3_kjps2")])
+metadata/_custom_type_script = "uid://bpgxixfqmagv2"

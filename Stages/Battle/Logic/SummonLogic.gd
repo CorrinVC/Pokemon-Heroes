@@ -21,6 +21,8 @@ func startNextSummonTurn() -> void:
 		EventBus.summonTurnEnded.emit()
 		return
 	
+	await get_tree().create_timer(0.25).timeout
+	
 	actingSummons[0].performTurn()
 
 func onSummonActionsCompleted(summon: SummonCreature) -> void:

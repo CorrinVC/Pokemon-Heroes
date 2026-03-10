@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://b8poq6ueclx54" path="res://Stages/Battle/Logic/EnemyLogic.gd" id="9_1yimy"]
 [ext_resource type="Script" uid="uid://b821cttcvijqf" path="res://Creatures/Summons/SummonCreature.gd" id="9_irrbi"]
 [ext_resource type="Script" uid="uid://bev8ocoee2uhv" path="res://Creatures/Enemies/EnemyCreature.gd" id="10_60j37"]
+[ext_resource type="Resource" uid="uid://c43puoqpmc3f" path="res://Creatures/Summons/Electric/Pikachu/PikachuSummonStats.tres" id="10_pcr2t"]
 [ext_resource type="PackedScene" uid="uid://dah5h1fto0jw7" path="res://Cards/UI/CardPileButton.tscn" id="11_fa073"]
 [ext_resource type="PackedScene" uid="uid://chl6og1a3wj4i" path="res://Stages/Battle/UI/EnergyUI.tscn" id="11_pwiug"]
 [ext_resource type="PackedScene" uid="uid://ymsspvnsmcin" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataActionPicker.tscn" id="13_2xma5"]
@@ -71,7 +72,7 @@ script = ExtResource("8_3x0ct")
 position = Vector2(440, 380)
 collision_layer = 4
 script = ExtResource("9_irrbi")
-summonStats = null
+summonStats = ExtResource("10_pcr2t")
 creatureStats = ExtResource("4_2hfsl")
 fieldColumn = 1
 

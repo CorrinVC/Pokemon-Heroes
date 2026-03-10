@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cd54hql0lkiq3" path="res://Creatures/Enemies/EnemyActionPicker.gd" id="1_d1khw"]
 [ext_resource type="Script" uid="uid://bqq1s3fl6f44h" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataBiteAction.gd" id="2_fh65l"]
-[ext_resource type="Script" uid="uid://cpnd7g61inxo0" path="res://Creatures/Enemies/Colorless/Rattata/Actions/TailWhipAction.gd" id="3_c8voo"]
+[ext_resource type="Script" uid="uid://cpnd7g61inxo0" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataTailWhipAction.gd" id="3_c8voo"]
 
 [node name="RattataActionPicker" type="Node" unique_id=58975667]
 script = ExtResource("1_d1khw")
 
 [node name="BiteAction" type="Node" parent="." unique_id=779256716]
 script = ExtResource("2_fh65l")
-id = "Bite"
+id = "RattataBite"
 chanceWeight = 3.0
 
 [node name="TailWhipAction" type="Node" parent="." unique_id=1167411375]
 script = ExtResource("3_c8voo")
-id = "TailWhip"
+id = "RattataTailWhip"
