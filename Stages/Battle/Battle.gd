@@ -10,8 +10,12 @@ var allyFieldPositions: Dictionary[Vector2, Creature] = {}
 var hostileFieldPositions: Dictionary[Vector2, Creature] = {}
 
 func _ready() -> void:
+	summonLogic.child_order_changed.connect(onSummonCountChanged.call_deferred)
+	enemyLogic.child_order_changed.connect(onEnemyCountChanged.call_deferred)
+	
 	EventBus.heroTurnEnded.connect(heroLogic.endTurn)
 	EventBus.heroHandDiscarded.connect(startSummonTurn)
+	EventBus.heroFainted.connect(onHeroFainted)
 	
 	EventBus.summonTurnEnded.connect(startEnemyTurn)
 	
@@ -35,6 +39,10 @@ func startSummonTurn() -> void:
 	summonLogic.updateSummonTargets(hostileFieldPositions)
 	summonLogic.startTurn()
 
+func onSummonCountChanged() -> void:
+	updateFieldPositions()
+	enemyLogic.updateEnemyTargets(allyFieldPositions)
+
 func startEnemyTurn() -> void:
 	enemyLogic.updateEnemyTargets(allyFieldPositions)
 	enemyLogic.startTurn()
@@ -42,6 +50,15 @@ func startEnemyTurn() -> void:
 func onEnemyTurnEnded() -> void:
 	heroLogic.startTurn()
 	enemyLogic.resetEnemyActions()
+
+func onEnemyCountChanged() -> void:
+	updateFieldPositions()
+	summonLogic.updateSummonTargets(hostileFieldPositions)
+	if enemyLogic.get_child_count() <= 0:
+		EventBus.battleCompleteRequested.emit(BattleCompletePanel.Outcome.WIN)
+
+func onHeroFainted() -> void:
+	EventBus.battleCompleteRequested.emit(BattleCompletePanel.Outcome.LOSS)
 
 func updateFieldPositions() -> void:
 	for summon: SummonCreature in summonLogic.get_children():

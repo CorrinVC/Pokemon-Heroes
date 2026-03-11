@@ -62,6 +62,7 @@ func updateAction() -> void:
 
 func updateIntent() -> void:
 	if currentAction:
+		currentAction.updateIntentText()
 		intentUI.updateIntent(currentAction.intent)
 
 func performTurn() -> void:
@@ -72,3 +73,9 @@ func performTurn() -> void:
 	
 	intentUI.hide()
 	currentAction.performAction()
+
+func takeDamage(damage: int, factorProtect: bool = true) -> void:
+	super.takeDamage(damage, factorProtect)
+	if creatureStats.currentHealth <= 0:
+		EventBus.enemyFainted.emit(self)
+		queue_free()

@@ -6,15 +6,13 @@ var actingEnemies: Array[EnemyCreature] = []
 
 func _ready() -> void:
 	EventBus.enemyActionCompleted.connect(onEnemyActionCompleted)
+	EventBus.enemyFainted.connect(onEnemyFainted)
 
-func updateEnemyTargets(enemies: Dictionary[Vector2, Creature]) -> void:
+func updateEnemyTargets(allies: Dictionary[Vector2, Creature]) -> void:
 	for enemy: EnemyCreature in get_children():
-		enemy.setTarget(enemy.findTarget(enemies))
+		enemy.setTarget(enemy.findTarget(allies))
 
 func startTurn() -> void:
-	if get_child_count() == 0:
-		return
-	
 	actingEnemies.clear()
 	for enemy: EnemyCreature in get_children():
 		enemy.creatureStats.currentProtect = 0
@@ -23,17 +21,24 @@ func startTurn() -> void:
 	startNextEnemyTurn()
 
 func startNextEnemyTurn() -> void:
+	await get_tree().create_timer(0.25).timeout
+	
 	if actingEnemies.is_empty():
 		EventBus.enemyTurnEnded.emit()
 		return
-	
-	await get_tree().create_timer(0.25).timeout
 	
 	actingEnemies[0].performTurn()
 
 func onEnemyActionCompleted(enemy: EnemyCreature) -> void:
 	actingEnemies.erase(enemy)
 	startNextEnemyTurn()
+
+func onEnemyFainted(enemy: EnemyCreature) -> void:
+	var isEnemyTurn: bool = actingEnemies.size() > 0
+	actingEnemies.erase(enemy)
+	
+	if isEnemyTurn:
+		startNextEnemyTurn()
 
 func resetEnemyActions() -> void:
 	for enemy: EnemyCreature in get_children():

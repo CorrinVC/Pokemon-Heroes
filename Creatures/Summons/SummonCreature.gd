@@ -34,3 +34,9 @@ func performTurn() -> void:
 		EventBus.summonActionsCompleted.emit(self)
 	
 	selectedAction.performAction()
+
+func takeDamage(damage: int, factorProtect: bool = true) -> void:
+	super.takeDamage(damage, factorProtect)
+	if creatureStats.currentHealth <= 0:
+		EventBus.summonFainted.emit(self)
+		queue_free()

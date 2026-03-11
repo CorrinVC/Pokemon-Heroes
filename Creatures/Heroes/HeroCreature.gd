@@ -7,3 +7,9 @@ func setHeroStats(value: HeroStats) -> void:
 		return
 	
 	heroStats = value.createInstance()
+
+func takeDamage(damage: int, factorProtect: bool = true) -> void:
+	super.takeDamage(damage, factorProtect)
+	if creatureStats.currentHealth <= 0:
+		EventBus.heroFainted.emit()
+		queue_free()

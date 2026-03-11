@@ -12,3 +12,7 @@ func performAction() -> void:
 	
 	damageEffect.execute(targetArray)
 	super.performAction()
+
+func updateIntentText() -> void:
+	if intent:
+		intent.currentText = intent.baseText % damage

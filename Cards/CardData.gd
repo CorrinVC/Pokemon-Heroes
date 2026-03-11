@@ -26,7 +26,7 @@ func playCard(targets: Array[Area2D]) -> void:
 	
 	var cardTargets: Array[Creature] = getCardTargets(targets)
 	for creature in cardTargets:
-		creature.creatureStats.takeDamage(2)
+		creature.takeDamage(20)
 
 func getCardTargets(targets: Array[Area2D]) -> Array[Creature]:
 	if not targets:

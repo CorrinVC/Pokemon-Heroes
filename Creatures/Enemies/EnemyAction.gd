@@ -18,3 +18,7 @@ func performAction() -> void:
 	EventBus.enemyActionCompleted.emit(enemy)
 	var targetName: String = "No Target" if not target else target.creatureName
 	print_debug(enemy.creatureName + " performing " + id + " on " + targetName)
+
+func updateIntentText() -> void:
+	if intent:
+		intent.currentText = intent.baseText

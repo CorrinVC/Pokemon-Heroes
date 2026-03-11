@@ -11,5 +11,5 @@ func updateIntent(intent: EnemyIntent) -> void:
 	intentIcon.texture = intent.icon
 	intentIcon.visible = intentIcon.texture != null
 	
-	valueTextLabel.text = str(intent.baseText)
-	valueTextLabel.visible = intent.baseText.length() > 0
+	valueTextLabel.text = str(intent.currentText)
+	valueTextLabel.visible = intent.currentText.length() > 0

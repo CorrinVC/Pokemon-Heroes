@@ -8,7 +8,6 @@
 
 [sub_resource type="Resource" id="Resource_o7xsc"]
 script = ExtResource("4_xvks8")
-baseText = "20"
 icon = ExtResource("3_kk1cr")
 metadata/_custom_type_script = "uid://cmiu6dy464jig"
 
@@ -17,6 +16,7 @@ script = ExtResource("1_d1khw")
 
 [node name="BiteAction" type="Node" parent="." unique_id=779256716]
 script = ExtResource("2_fh65l")
+damage = 50
 id = "RattataBite"
 chanceWeight = 3.0
 intent = SubResource("Resource_o7xsc")

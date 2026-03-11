@@ -5,6 +5,7 @@ var actingSummons: Array[SummonCreature] = []
 func _ready() -> void:
 	EventBus.heroHandDrawn.connect(generateSummonsEnergy)
 	EventBus.summonActionsCompleted.connect(onSummonActionsCompleted)
+	EventBus.summonFainted.connect(onSummonFainted)
 
 func updateSummonTargets(enemies: Dictionary[Vector2, Creature]) -> void:
 	for summon: SummonCreature in get_children():
@@ -17,9 +18,6 @@ func generateSummonsEnergy() -> void:
 	EventBus.summonEnergyGenerated.emit(energyGenerated)
 
 func startTurn() -> void:
-	if get_child_count() == 0:
-		return
-	
 	actingSummons.clear()
 	for summon: SummonCreature in get_children():
 		summon.creatureStats.currentProtect = 0
@@ -28,14 +26,21 @@ func startTurn() -> void:
 	startNextSummonTurn()
 
 func startNextSummonTurn() -> void:
+	await get_tree().create_timer(0.25).timeout
+	
 	if actingSummons.is_empty():
 		EventBus.summonTurnEnded.emit()
 		return
-	
-	await get_tree().create_timer(0.25).timeout
 	
 	actingSummons[0].performTurn()
 
 func onSummonActionsCompleted(summon: SummonCreature) -> void:
 	actingSummons.erase(summon)
 	startNextSummonTurn()
+
+func onSummonFainted(summon: SummonCreature) -> void:
+	var isSummonTurn: bool = actingSummons.size() > 0
+	actingSummons.erase(summon)
+	
+	if isSummonTurn:
+		startNextSummonTurn()

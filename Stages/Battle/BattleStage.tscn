@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://chl6og1a3wj4i" path="res://Stages/Battle/UI/EnergyUI/EnergyUI.tscn" id="11_pwiug"]
 [ext_resource type="PackedScene" uid="uid://ymsspvnsmcin" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataActionPicker.tscn" id="13_2xma5"]
 [ext_resource type="PackedScene" uid="uid://gq1fsuugv7ij" path="res://Cards/UI/CardPileView.tscn" id="15_d3f7e"]
+[ext_resource type="PackedScene" uid="uid://bdjtmibynegst" path="res://Stages/Battle/UI/BattleCompletePanel/BattleCompletePanel.tscn" id="22_ldf7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a021t"]
 size = Vector2(1280, 464)
@@ -74,7 +75,7 @@ collision_layer = 4
 script = ExtResource("9_irrbi")
 summonStats = ExtResource("10_pcr2t")
 creatureStats = ExtResource("4_2hfsl")
-fieldColumn = 1
+fieldRow = 1
 
 [node name="Enemies" type="Node2D" parent="." unique_id=398313929]
 unique_name_in_owner = true
@@ -82,6 +83,14 @@ script = ExtResource("9_1yimy")
 
 [node name="EnemyCreature" parent="Enemies" unique_id=1181621145 groups=["targetAll", "targetHostile"] instance=ExtResource("2_qow1e")]
 position = Vector2(900, 380)
+collision_layer = 8
+script = ExtResource("10_60j37")
+actionPickerScene = ExtResource("13_2xma5")
+creatureStats = ExtResource("5_xjnxk")
+fieldRow = 1
+
+[node name="EnemyCreature2" parent="Enemies" unique_id=2002369060 groups=["targetAll", "targetHostile"] instance=ExtResource("2_qow1e")]
+position = Vector2(1087, 380)
 collision_layer = 8
 script = ExtResource("10_60j37")
 actionPickerScene = ExtResource("13_2xma5")
@@ -210,8 +219,14 @@ grow_vertical = 0
 disabled = true
 text = "End Turn"
 
-[node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1087364272]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=407638570]
 layer = 2
+
+[node name="BattleCompletePanel" parent="CanvasLayer" unique_id=1549488621 instance=ExtResource("22_ldf7i")]
+visible = false
+
+[node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1087364272]
+layer = 3
 
 [node name="DrawPileView" parent="CardPileViews" unique_id=1773566303 instance=ExtResource("15_d3f7e")]
 unique_name_in_owner = true
