@@ -107,10 +107,10 @@ unique_name_in_owner = true
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 36.0
+offset_left = 20.0
 offset_top = 40.0
-offset_right = 100.0
-offset_bottom = 104.0
+offset_right = 124.0
+offset_bottom = 72.0
 grow_vertical = 2
 
 [node name="Hand" type="Control" parent="BattleUI" unique_id=1672963127 node_paths=PackedStringArray("heroCreature")]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c06icat81v5ic"]
+
+[ext_resource type="Texture2D" uid="uid://b5yw2o5gfu1k2" path="res://icon.svg" id="1_gobvb"]
+[ext_resource type="Script" uid="uid://baetyh1ob606v" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIcon.gd" id="2_gobvb"]
+[ext_resource type="Script" uid="uid://d1hbv8o7k3qy3" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStateMachine.gd" id="3_8agsg"]
+[ext_resource type="Resource" uid="uid://dc7gj6tlbn2m7" path="res://Creatures/Heroes/Raichu/RaichuCreatureStats.tres" id="3_i50gw"]
+[ext_resource type="Script" uid="uid://7lpr5rkbo884" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStates/IconSingleState.gd" id="4_sdqwr"]
+[ext_resource type="Script" uid="uid://clhotpnfci6au" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStates/IconStackedState.gd" id="5_7jysm"]
+[ext_resource type="Script" uid="uid://ci6e03kpkpj3u" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStates/IconClickedState.gd" id="6_v8llg"]
+[ext_resource type="Script" uid="uid://eb40hrmu00dy" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStates/IconDraggingState.gd" id="7_se4p2"]
+[ext_resource type="Script" uid="uid://dy6kebmk10kts" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStates/IconReleasedState.gd" id="8_i50gw"]
+
+[node name="EnergyIcon" type="TextureRect" unique_id=1256102245]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_gobvb")
+expand_mode = 1
+script = ExtResource("2_gobvb")
+creatureStats = ExtResource("3_i50gw")
+
+[node name="EnergyCountLabel" type="Label" parent="." unique_id=1828598126]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_top = 22.0
+offset_right = 9.0
+offset_bottom = 45.0
+grow_horizontal = 0
+text = "69"
+
+[node name="EnergyIconStateMachine" type="Node" parent="." unique_id=1510276370 node_paths=PackedStringArray("initialState")]
+unique_name_in_owner = true
+script = ExtResource("3_8agsg")
+initialState = NodePath("IconStackedState")
+
+[node name="IconSingleState" type="Node" parent="EnergyIconStateMachine" unique_id=1377409987]
+script = ExtResource("4_sdqwr")
+
+[node name="IconStackedState" type="Node" parent="EnergyIconStateMachine" unique_id=2131081674]
+script = ExtResource("5_7jysm")
+state = 1
+
+[node name="IconClickedState" type="Node" parent="EnergyIconStateMachine" unique_id=469712443]
+script = ExtResource("6_v8llg")
+state = 2
+
+[node name="IconDraggingState" type="Node" parent="EnergyIconStateMachine" unique_id=939788005]
+script = ExtResource("7_se4p2")
+state = 3
+
+[node name="IconReleasedState" type="Node" parent="EnergyIconStateMachine" unique_id=680119545]
+script = ExtResource("8_i50gw")
+state = 4
+
+[connection signal="gui_input" from="." to="." method="onGuiInput"]

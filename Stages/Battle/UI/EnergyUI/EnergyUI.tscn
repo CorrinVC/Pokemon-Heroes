@@ -1,23 +1,26 @@
 [gd_scene format=3 uid="uid://chl6og1a3wj4i"]
 
-[ext_resource type="Texture2D" uid="uid://b5yw2o5gfu1k2" path="res://icon.svg" id="1_wvlke"]
+[ext_resource type="Resource" uid="uid://dc7gj6tlbn2m7" path="res://Creatures/Heroes/Raichu/RaichuCreatureStats.tres" id="2_0m60e"]
 [ext_resource type="Script" uid="uid://cbyj0hvdi5oyu" path="res://Stages/Battle/UI/EnergyUI/EnergyUI.gd" id="2_1qpnm"]
+[ext_resource type="PackedScene" uid="uid://c06icat81v5ic" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIcon.tscn" id="2_m1fx1"]
 
-[node name="EnergyUI" type="TextureRect" unique_id=1256102245]
-custom_minimum_size = Vector2(64, 64)
-texture = ExtResource("1_wvlke")
-expand_mode = 1
+[node name="EnergyUI" type="Control" unique_id=1943203262]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 104.0
+offset_bottom = 32.0
 script = ExtResource("2_1qpnm")
+creatureStats = ExtResource("2_0m60e")
 
-[node name="EnergyCountLabel" type="Label" parent="." unique_id=1828598126]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -10.0
-offset_top = 54.0
-offset_right = 30.0
-offset_bottom = 77.0
-grow_horizontal = 0
-text = "69"
+[node name="EnergyIcon" parent="." unique_id=1256102245 instance=ExtResource("2_m1fx1")]
+layout_mode = 0
+
+[node name="EnergyIcon2" parent="." unique_id=311045202 instance=ExtResource("2_m1fx1")]
+layout_mode = 0
+offset_left = 36.0
+offset_right = 68.0
+
+[node name="EnergyIcon3" parent="." unique_id=354903210 instance=ExtResource("2_m1fx1")]
+layout_mode = 0
+offset_left = 72.0
+offset_right = 104.0
