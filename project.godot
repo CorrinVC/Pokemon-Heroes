@@ -84,6 +84,7 @@ rightMouse={
 2d_physics/layer_3="summonsLayer"
 2d_physics/layer_4="enemiesLayer"
 2d_physics/layer_5="cardLayer"
+2d_physics/layer_6="energyLayer"
 
 [physics]
 

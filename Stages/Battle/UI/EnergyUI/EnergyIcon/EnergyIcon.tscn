@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://eb40hrmu00dy" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStates/IconDraggingState.gd" id="7_se4p2"]
 [ext_resource type="Script" uid="uid://dy6kebmk10kts" path="res://Stages/Battle/UI/EnergyUI/EnergyIcon/EnergyIconStates/IconReleasedState.gd" id="8_i50gw"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_i50gw"]
+radius = 16.0
+
 [node name="EnergyIcon" type="TextureRect" unique_id=1256102245]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
@@ -32,6 +35,14 @@ offset_right = 9.0
 offset_bottom = 45.0
 grow_horizontal = 0
 text = "69"
+
+[node name="EnergyCollision" type="Area2D" parent="." unique_id=564742497]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnergyCollision" unique_id=164008018]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_i50gw")
 
 [node name="EnergyIconStateMachine" type="Node" parent="." unique_id=1510276370 node_paths=PackedStringArray("initialState")]
 unique_name_in_owner = true
@@ -58,3 +69,5 @@ script = ExtResource("8_i50gw")
 state = 4
 
 [connection signal="gui_input" from="." to="." method="onGuiInput"]
+[connection signal="area_entered" from="EnergyCollision" to="." method="onEnergyAreaEntered"]
+[connection signal="area_exited" from="EnergyCollision" to="." method="onEnergyAreaExited"]

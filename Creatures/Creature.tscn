@@ -36,6 +36,10 @@ offset_right = 60.0
 offset_bottom = 144.0
 grow_horizontal = 2
 
+[node name="Spacer" type="Control" parent="VBoxContainer" unique_id=1352797611]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1723478782]
 layout_mode = 2
 theme_override_constants/separation = 0

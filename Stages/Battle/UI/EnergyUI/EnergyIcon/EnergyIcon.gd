@@ -14,6 +14,8 @@ var dragOffset: Vector2
 var stacked: bool = false
 var interactable: bool = true
 
+var target: SummonCreature
+
 func _ready() -> void:
 	stateMachine.initStateMachine(self)
 
@@ -39,3 +41,15 @@ func adjustEnergyCount() -> void:
 	# TESTING ?
 	await get_tree().create_timer(MOVE_TIMER / 2).timeout
 	creatureStats.energyCount += 1
+
+func attachEnergy() -> void:
+	target.creatureStats.energyCount += 1
+	queue_free()
+
+func onEnergyAreaEntered(area: Area2D) -> void:
+	if area is SummonCreature:
+		target = area
+
+func onEnergyAreaExited(area: Area2D) -> void:
+	if area is SummonCreature and area == target:
+		target = null

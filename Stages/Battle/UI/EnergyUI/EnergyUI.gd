@@ -34,12 +34,11 @@ func setInteractable(value: bool) -> void:
 
 func onStatsChanged() -> void:
 	if creatureStats.energyCount > MAX_SINGLE_ICONS:
-		if get_child_count() > 1:
-			for energyIcon: EnergyIcon in get_children():
-				energyIcon.queue_free()
-			createEnergyIcon(creatureStats.energyType, true)
-		var energyIcon: EnergyIcon = get_child(0) as EnergyIcon
-		energyIcon.setAmount(creatureStats.energyCount)
+		for i in range(get_child_count()):
+			var deleteIcon: EnergyIcon = get_child(i)
+			deleteIcon.queue_free()
+		
+		createEnergyIcon(creatureStats.energyType, true)
 	
 	else:
 		if get_child_count() == creatureStats.energyCount:
@@ -58,14 +57,18 @@ func onEnergyIconReparentRequested(energyIcon: EnergyIcon) -> void:
 	if energyIcon in get_children():
 		return
 	
-	energyIcon.reparent(self, true)
+	energyIcon.reparent(self)
 
 func createEnergyIcon(type: CardTypes.EnergyType, stacked: bool) -> void:
 	var newEnergyIcon: EnergyIcon = \
 		ENERGY_ICON_SCENE.instantiate() as EnergyIcon
 	newEnergyIcon.stacked = stacked
-	newEnergyIcon.position = getNewIconPosition(get_child_count(), newEnergyIcon)
+	
+	if not stacked:
+		newEnergyIcon.position = getNewIconPosition(get_child_count(), newEnergyIcon)
+	
 	add_child(newEnergyIcon)
+	
 	newEnergyIcon.creatureStats = creatureStats
 	newEnergyIcon.setEnergyType(type)
 	newEnergyIcon.reparentRequested.connect(onEnergyIconReparentRequested)
@@ -75,8 +78,6 @@ func createEnergyIcon(type: CardTypes.EnergyType, stacked: bool) -> void:
 		newEnergyIcon.setAmount(creatureStats.energyCount)
 
 func energyCountChanged() -> void:
-	if creatureStats.energyCount > MAX_SINGLE_ICONS:
-		return
 	for i in range(get_child_count()):
 		var icon: EnergyIcon = get_child(i)
 		

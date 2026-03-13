@@ -1,5 +1,9 @@
 extends EnergyIconState
 
+const MINIMUM_DRAG_DURATION: float = 0.05
+
+var minimumDragTimeElapsed: bool = false
+
 func enter() -> void:
 	energyIcon.dragOffset = energyIcon.get_global_mouse_position() - \
 		energyIcon.global_position
@@ -7,6 +11,12 @@ func enter() -> void:
 	var uiLayer := get_tree().get_first_node_in_group(UI_LAYER_GROUP)
 	if uiLayer:
 		energyIcon.reparent(uiLayer)
+	
+	energyIcon.creatureStats.energyCount -= 1
+	
+	minimumDragTimeElapsed = false
+	var thresholdTimer := get_tree().create_timer(MINIMUM_DRAG_DURATION, false)
+	thresholdTimer.timeout.connect(func() -> void: minimumDragTimeElapsed = true)
 
 func onInput(event: InputEvent) -> void:
 	var motion: bool = event is InputEventMouseMotion
@@ -18,6 +28,6 @@ func onInput(event: InputEvent) -> void:
 		energyIcon.global_position = energyIcon.get_global_mouse_position() - \
 			energyIcon.dragOffset
 	
-	if release:
+	if release and minimumDragTimeElapsed:
+		get_viewport().set_input_as_handled()
 		transitionRequested.emit(self, State.RELEASED)
-		return
