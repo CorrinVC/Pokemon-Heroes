@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://drqc7hoaq4320"]
+
+[ext_resource type="Texture2D" uid="uid://dxd781hvotndp" path="res://Creatures/Summons/Electric/Pikachu/PikachuSprite.png" id="1_r52m7"]
+[ext_resource type="Script" uid="uid://2p0p7pfoud84" path="res://Cards/Raichu/SummonCards/SummonPikachuCard.gd" id="2_eqns1"]
+
+[resource]
+script = ExtResource("2_eqns1")
+cardName = "Pikachu"
+cardArt = ExtResource("1_r52m7")
+cardType = 3
+energyType = 3
+target = 5
+metadata/_custom_type_script = "uid://llvymkxfovph"

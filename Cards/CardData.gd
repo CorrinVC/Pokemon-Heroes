@@ -9,7 +9,8 @@ enum Target {
 	SINGLE_FRIENDLY,
 	SINGLE_HOSTILE,
 	ALL_FRIENDLY,
-	ALL_HOSTILE
+	ALL_HOSTILE,
+	NONE
 }
 
 @export var cardName: String
@@ -21,12 +22,12 @@ enum Target {
 @export var target: Target
 @export_multiline var cardText: String
 
-func playCard(targets: Array[Area2D]) -> void:
+func playCard(_targets: Array[Area2D]) -> void:
 	EventBus.cardPlayed.emit(self)
 	
-	var cardTargets: Array[Creature] = getCardTargets(targets)
-	for creature in cardTargets:
-		creature.takeDamage(20)
+	#var cardTargets: Array[Creature] = getCardTargets(targets)
+	#for creature in cardTargets:
+		#creature.takeDamage(20)
 
 func getCardTargets(targets: Array[Area2D]) -> Array[Creature]:
 	if not targets:

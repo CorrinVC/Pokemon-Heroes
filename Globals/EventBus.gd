@@ -2,6 +2,7 @@ extends Node
 
 # Playing Card Signals
 signal cardPlayed(cardData: CardData)
+signal summonCardPlayed(creatureStats: CreatureStats, summonStats: SummonStats)
 
 # Hero Signals
 signal heroHandDrawn

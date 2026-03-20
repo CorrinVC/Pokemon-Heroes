@@ -1,8 +1,12 @@
 class_name SummonLogic extends Node2D
 
+var CREATURE_SCENE: PackedScene = preload("uid://cpa7jsu7bnwhu")
+var SUMMON_SCRIPT: Script = preload("uid://b821cttcvijqf")
+
 var actingSummons: Array[SummonCreature] = []
 
 func _ready() -> void:
+	EventBus.summonCardPlayed.connect(onCreatureSummoned.call_deferred)
 	EventBus.heroHandDrawn.connect(generateSummonsEnergy)
 	EventBus.summonActionsCompleted.connect(onSummonActionsCompleted)
 	EventBus.summonFainted.connect(onSummonFainted)
@@ -44,3 +48,13 @@ func onSummonFainted(summon: SummonCreature) -> void:
 	
 	if isSummonTurn:
 		startNextSummonTurn()
+
+func onCreatureSummoned(creatureStats: CreatureStats, summonStats: SummonStats) -> void:
+	var newCreature := CREATURE_SCENE.instantiate()
+	newCreature.set_script(SUMMON_SCRIPT)
+	
+	var newSummon: SummonCreature = newCreature as SummonCreature
+	newSummon.creatureStats = creatureStats
+	newSummon.summonStats = summonStats
+	add_child(newSummon)
+	

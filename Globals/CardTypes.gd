@@ -3,7 +3,8 @@ extends Node
 enum CardType {
 	ATTACK,
 	SKILL,
-	ABILITY
+	ABILITY,
+	SUMMON
 }
 
 enum EnergyType {
