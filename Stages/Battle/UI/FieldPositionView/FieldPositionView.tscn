@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://jjary8prv2ml"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mi0hr"]
+font_size = 40
+
+[node name="FieldPositionView" type="Control" unique_id=1100664742]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundBlur" type="ColorRect" parent="." unique_id=1856096068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3388666, 0.026000006, 0.52, 0.8627451)
+
+[node name="ViewMargins" type="MarginContainer" parent="." unique_id=1589238328]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ViewContents" type="VBoxContainer" parent="ViewMargins" unique_id=907309545]
+layout_mode = 2
+
+[node name="SplashLabel" type="Label" parent="ViewMargins/ViewContents" unique_id=1167908115]
+layout_mode = 2
+text = "Field Positions"
+label_settings = SubResource("LabelSettings_mi0hr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ViewGrids" type="HBoxContainer" parent="ViewMargins/ViewContents" unique_id=1151306576]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AllyFieldPositions" type="GridContainer" parent="ViewMargins/ViewContents/ViewGrids" unique_id=499784193]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HostileFieldPositions" type="GridContainer" parent="ViewMargins/ViewContents/ViewGrids" unique_id=673122950]
+layout_mode = 2
+size_flags_horizontal = 3

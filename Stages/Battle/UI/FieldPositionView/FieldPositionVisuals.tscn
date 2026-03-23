@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://h3jau26qicib"]
+
+[ext_resource type="Texture2D" uid="uid://cspejfkbtcebm" path="res://Creatures/Heroes/Raichu/RaichuSprite.png" id="1_eqdhh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y76w"]
+bg_color = Color(0.76, 0.76, 0.76, 0.14509805)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0, 0, 0.49803922)
+
+[node name="FieldPositionVisuals" type="Panel" unique_id=278424976]
+custom_minimum_size = Vector2(192, 192)
+offset_right = 180.0
+offset_bottom = 180.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0y76w")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=43528610]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=645203949]
+layout_mode = 2
+texture = ExtResource("1_eqdhh")
+stretch_mode = 2
+flip_h = true

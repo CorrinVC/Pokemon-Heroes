@@ -219,10 +219,10 @@ grow_vertical = 0
 disabled = true
 text = "End Turn"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=407638570]
+[node name="BattleCompleteLayer" type="CanvasLayer" parent="." unique_id=407638570]
 layer = 2
 
-[node name="BattleCompletePanel" parent="CanvasLayer" unique_id=1549488621 instance=ExtResource("22_ldf7i")]
+[node name="BattleCompletePanel" parent="BattleCompleteLayer" unique_id=1549488621 instance=ExtResource("22_ldf7i")]
 visible = false
 
 [node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1087364272]
