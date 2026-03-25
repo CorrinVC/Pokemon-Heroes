@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ymsspvnsmcin" path="res://Creatures/Enemies/Colorless/Rattata/Actions/RattataActionPicker.tscn" id="13_2xma5"]
 [ext_resource type="PackedScene" uid="uid://gq1fsuugv7ij" path="res://Cards/UI/CardPileView.tscn" id="15_d3f7e"]
 [ext_resource type="PackedScene" uid="uid://bdjtmibynegst" path="res://Stages/Battle/UI/BattleCompletePanel/BattleCompletePanel.tscn" id="22_ldf7i"]
+[ext_resource type="PackedScene" uid="uid://jjary8prv2ml" path="res://Stages/Battle/UI/FieldPositionView/FieldPositionView.tscn" id="22_txt0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a021t"]
 size = Vector2(1280, 464)
@@ -218,6 +219,11 @@ grow_horizontal = 0
 grow_vertical = 0
 disabled = true
 text = "End Turn"
+
+[node name="FieldPositionViewLayer" type="CanvasLayer" parent="." unique_id=1682092216]
+
+[node name="FieldPositionView" parent="FieldPositionViewLayer" unique_id=1100664742 instance=ExtResource("22_txt0l")]
+visible = false
 
 [node name="BattleCompleteLayer" type="CanvasLayer" parent="." unique_id=407638570]
 layer = 2

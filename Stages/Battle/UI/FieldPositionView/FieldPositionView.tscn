@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://jjary8prv2ml"]
 
+[ext_resource type="PackedScene" uid="uid://h3jau26qicib" path="res://Stages/Battle/UI/FieldPositionView/FieldPositionVisuals.tscn" id="1_aerdj"]
+[ext_resource type="Resource" uid="uid://bwoe4wghimy6p" path="res://Creatures/Summons/Electric/Pikachu/PikachuCreatureStats.tres" id="2_8y42u"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_mi0hr"]
 font_size = 40
 
@@ -48,8 +51,53 @@ size_flags_vertical = 3
 
 [node name="AllyFieldPositions" type="GridContainer" parent="ViewMargins/ViewContents/ViewGrids" unique_id=499784193]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="FieldPositionVisuals" parent="ViewMargins/ViewContents/ViewGrids/AllyFieldPositions" unique_id=278424976 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+creatureStats = ExtResource("2_8y42u")
+
+[node name="FieldPositionVisuals2" parent="ViewMargins/ViewContents/ViewGrids/AllyFieldPositions" unique_id=2043017519 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals3" parent="ViewMargins/ViewContents/ViewGrids/AllyFieldPositions" unique_id=808842338 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals4" parent="ViewMargins/ViewContents/ViewGrids/AllyFieldPositions" unique_id=1258713207 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals5" parent="ViewMargins/ViewContents/ViewGrids/AllyFieldPositions" unique_id=596203451 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals6" parent="ViewMargins/ViewContents/ViewGrids/AllyFieldPositions" unique_id=2145348981 instance=ExtResource("1_aerdj")]
+layout_mode = 2
 
 [node name="HostileFieldPositions" type="GridContainer" parent="ViewMargins/ViewContents/ViewGrids" unique_id=673122950]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="FieldPositionVisuals" parent="ViewMargins/ViewContents/ViewGrids/HostileFieldPositions" unique_id=43528610 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals2" parent="ViewMargins/ViewContents/ViewGrids/HostileFieldPositions" unique_id=1375486327 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals3" parent="ViewMargins/ViewContents/ViewGrids/HostileFieldPositions" unique_id=1476040110 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals4" parent="ViewMargins/ViewContents/ViewGrids/HostileFieldPositions" unique_id=965200253 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals5" parent="ViewMargins/ViewContents/ViewGrids/HostileFieldPositions" unique_id=1591426558 instance=ExtResource("1_aerdj")]
+layout_mode = 2
+
+[node name="FieldPositionVisuals6" parent="ViewMargins/ViewContents/ViewGrids/HostileFieldPositions" unique_id=931485708 instance=ExtResource("1_aerdj")]
+layout_mode = 2
